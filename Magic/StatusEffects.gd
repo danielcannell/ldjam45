@@ -15,3 +15,7 @@ var buffs := {
 	"speed": 0,
 	"range":  0
 }
+
+func compute_overall_effects(active_items):
+	for item in active_items:
+		
