@@ -19,6 +19,8 @@ margin_right = 180.0
 
 [node name="Viewport" type="Viewport" parent="ViewportContainer"]
 size = Vector2( 844, 600 )
+handle_input_locally = false
 usage = 0
+render_target_update_mode = 3
 
 [node name="Playfield" parent="ViewportContainer/Viewport" instance=ExtResource( 4 )]
