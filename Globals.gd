@@ -5,3 +5,10 @@ enum ItemType {
     HAT,
     TORCH,
 }
+
+enum Slots {
+	HAT,
+	RING1,
+	RING2,
+	WEAPON
+}

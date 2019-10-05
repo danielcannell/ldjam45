@@ -15,8 +15,6 @@ var Action = {
 	REGEN: ActionType.new("REGEN", "Regenerate")
 }
 
-
-signal effect
 var action: ActionType
 func _init(screen_name, flavour_txt, mode, target, component, power_level, action: ActionType)\
 		.(screen_name, flavour_text, Mode.Passive, Target.SELF, component, power_level):

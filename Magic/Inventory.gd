@@ -1,12 +1,13 @@
 extends Node
 class_name Inventory
 
+signal passive
+signal active
+
 var itemtype_item_map := {
 	Globals.ItemType.HAT: PassiveSelfFocus.new(null, null, 0),
 	Globals.ItemType.TORCH: null
 }
-
-enum Slots {HAT, RING1, RING2, WEAPON}
 
 var active_items := {
 	HAT: null,
