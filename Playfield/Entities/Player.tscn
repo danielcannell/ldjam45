@@ -5,8 +5,9 @@
 [ext_resource path="res://Art/health_bar_under.png" type="Texture" id=3]
 [ext_resource path="res://Art/health_bar_progress.png" type="Texture" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4.5, 7 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.0
+height = 4.0
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 z_index = 10
