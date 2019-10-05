@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 
-var speed = 200
+var speed = 10000
 
 
 func get_input():
@@ -25,4 +25,4 @@ func _ready():
 
 func _physics_process(delta):
     var velocity = get_input()
-    move_and_slide(velocity)
+    move_and_slide(velocity * delta)

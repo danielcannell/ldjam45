@@ -5,21 +5,18 @@ const Player = preload("res://Playfield/Entities/Player.tscn")
 const Enemy = preload("res://Playfield/Entities/Enemy.tscn")
 const Item = preload("res://Playfield/Entities/Item.tscn")
 
+signal item_picked_up
 
+var player
 var enemies = []
-var items = []
 var rooms = []
 onready var tilemap = find_node("TileMap")
 onready var roomcenter = find_node("RoomCenter")
 
 
 func _init():
-    var player = Player.instance()
+    player = Player.instance()
     add_child(player)
-
-    var enemy = Enemy.instance()
-    add_child(enemy)
-    enemies.append(enemy)
 
     rooms.append(Rect2(0, 0, 9, 9))
     rooms.append(Rect2(8, 0, 11, 14))
@@ -30,15 +27,22 @@ func _ready():
     roomcenter.cell_size = tilemap.cell_size
     roomcenter.jump_to_room(rooms[0])
 
+    player.position = tilemap.map_to_world(Vector2(2, 2))
+
+    var enemy = Enemy.instance()
+    enemy.position = tilemap.map_to_world(Vector2(6, 2))
+    add_child(enemy)
+    enemies.append(enemy)
+
     var hat = Item.instance()
+    hat.position = tilemap.map_to_world(Vector2(5, 5))
     hat.set_item_type(Globals.ItemType.HAT)
     add_child(hat)
-    items.append(hat)
 
     var torch = Item.instance()
+    torch.position = tilemap.map_to_world(Vector2(10, 10))
     torch.set_item_type(Globals.ItemType.TORCH)
     add_child(torch)
-    items.append(torch)
 
 
 func _unhandled_input(event):
@@ -50,3 +54,7 @@ func _unhandled_input(event):
                 roomcenter.move_to_room(rooms[1])
             if (event.scancode == KEY_3):
                 roomcenter.move_to_room(rooms[2])
+
+
+func on_item_picked_up(item):
+    emit_signal("item_picked_up", item)
