@@ -12,6 +12,7 @@ signal item_picked_up
 var player
 var enemies = []
 var rooms = RoomBounds.new()
+var currentroom: Room = null
 
 var item_cooldown = 0
 
@@ -27,9 +28,13 @@ func _init():
 func _ready():
     rooms.compute_bounds(tilemap)
     roomcenter.cell_size = tilemap.cell_size
-    #roomcenter.jump_to_room(rooms[0])
 
-    player.position = tilemap.map_to_world(Vector2(2, 2))
+    var player_start := Vector2(2, 2)
+    player.position = tilemap.map_to_world(player_start)
+
+    currentroom = rooms.get_containing_room(player_start)
+    assert(currentroom != null)
+    roomcenter.jump_to_room(currentroom)
 
     var enemy = Enemy.instance()
     enemy.position = tilemap.map_to_world(Vector2(6, 2))
@@ -79,3 +84,8 @@ func _process(delta):
         activate_item()
 
     item_cooldown = max(0, item_cooldown - delta)
+
+    var playerroom: Room = rooms.get_containing_room(tilemap.world_to_map(player.position))
+    if playerroom != null:
+        currentroom = playerroom
+        roomcenter.move_to_room(playerroom)

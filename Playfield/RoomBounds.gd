@@ -30,6 +30,9 @@ func _init():
         assert(room.points[0] == Vector2(5,0))
         assert(room.points[-1] == Vector2(1,0))
 
+        assert(room.contains(Vector2(3, 1)))
+        assert(room.size() == Vector2(9, 7))
+
 
 # Get the value of a cell.
 # Return INVALID_CELL if the coordinates are out of bounds.
@@ -46,7 +49,7 @@ func set_cell(x: int, y: int, val: int) -> void:
 
 # Return true if this tile acts as a room boundary
 func tile_is_boundary(tile: int) -> bool:
-    if tile == 0:
+    if tile == Globals.Tiles.Wall1 or tile == Globals.Tiles.Door1 or tile == Globals.Tiles.Door2:
         return true
     return false
 

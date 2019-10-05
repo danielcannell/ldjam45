@@ -8,17 +8,17 @@ var targetposition = Vector2(0, 0)
 var cell_size = Vector2(16, 16)
 
 
-func jump_to_room(room: Rect2):
+func jump_to_room(room: Room) -> void:
     move_to_room(room)
     camera.zoom = Vector2(targetzoom, targetzoom)
     position = targetposition
 
 
-func move_to_room(room: Rect2):
-    var left = room.position.x
-    var top = room.position.y
-    var width = room.size.x
-    var height = room.size.y
+func move_to_room(room: Room) -> void:
+    var size := room.size()
+    # Add to each dimension so walls are visible
+    var width = size.x + 4
+    var height = size.y + 4
 
     # TODO work out screen size, in cells
     var screenheight = 600 / cell_size.y
@@ -35,7 +35,7 @@ func move_to_room(room: Rect2):
         screenscale = width / screenwidth
 
     targetzoom = screenscale
-    targetposition = Vector2(left + width / 2, top + height / 2) * cell_size.x
+    targetposition = room.center() * cell_size.x
 
 
 func _physics_process(delta):

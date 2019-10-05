@@ -63,3 +63,11 @@ enum ActionMode {
     
     _MAX
 }
+
+enum Tiles {
+    Wall1 = 0,
+    Door1 = 16,
+    Door2 = 17,
+
+    _MAX
+}

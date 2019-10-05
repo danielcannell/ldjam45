@@ -1,7 +1,9 @@
 class_name Room
 
 
-var _bounds: Rect2
+const INVALID_RECT := Rect2(-999, -999, 999, 999)
+
+var _bounds: Rect2 = INVALID_RECT
 var points: PoolVector2Array = PoolVector2Array()
 
 
@@ -10,7 +12,7 @@ func add_point(point: Vector2) -> void:
 
 
 func get_bounds() -> Rect2:
-    if _bounds == null:
+    if _bounds == INVALID_RECT:
         var minx: float = 1e12
         var miny: float = 1e12
         var maxx: float = -1e12
@@ -38,7 +40,7 @@ func center() -> Vector2:
 
 func size() -> Vector2:
     var bounds = get_bounds()
-    return Vector2(bounds.end.x - bounds.position.x, bounds.end.y - bounds.position.y)
+    return bounds.size
 
 
 func contains(pos: Vector2) -> bool:
