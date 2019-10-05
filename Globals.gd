@@ -18,6 +18,13 @@ enum Foci {
     _MAX,
 }
 
+enum ComponentType {
+    ELEMENT,
+    CONSTITUTION,
+    
+    _MAX
+}
+
 enum Elements {
     FIRE,
     WATER,
@@ -40,5 +47,12 @@ enum Slots {
     RING2,
     WEAPON,
 
+    _MAX
+}
+
+enum ActionMode {
+    ACTIVE,
+    PASSIVE,
+    
     _MAX
 }

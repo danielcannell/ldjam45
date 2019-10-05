@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Action",
+"language": "GDScript",
+"path": "res://Magic/Action.gd"
+}, {
 "base": "Item",
 "class": "Component",
 "language": "GDScript",
@@ -30,15 +35,22 @@ _global_script_classes=[ {
 "path": "res://Magic/Item.gd"
 }, {
 "base": "Node",
+"class": "ItemsByName",
+"language": "GDScript",
+"path": "res://Magic/ItemsByName.gd"
+}, {
+"base": "Node",
 "class": "StatusEffects",
 "language": "GDScript",
 "path": "res://Magic/StatusEffects.gd"
 } ]
 _global_script_class_icons={
+"Action": "",
 "Component": "",
 "Focus": "",
 "Inventory": "",
 "Item": "",
+"ItemsByName": "",
 "StatusEffects": ""
 }
 
