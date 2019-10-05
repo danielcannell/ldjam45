@@ -58,4 +58,3 @@ func _unhandled_input(event):
 
 func on_item_picked_up(item):
     emit_signal("item_picked_up", item)
-    player.damage(50)
