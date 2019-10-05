@@ -2,12 +2,12 @@ extends Area2D
 
 
 const TEXTURES = {
-    Globals.ItemType.HAT: preload("res://Art/hat.png"),
-    Globals.ItemType.TORCH: preload("res://Art/torch.png"),
+    Globals.WorldItem.HAT: preload("res://Art/hat.png"),
+    Globals.WorldItem.TORCH: preload("res://Art/torch.png"),
 }
 
 
-var type = Globals.ItemType.NONE
+var type
 
 
 func set_item_type(t):

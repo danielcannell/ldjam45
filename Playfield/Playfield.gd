@@ -36,12 +36,12 @@ func _ready():
 
     var hat = Item.instance()
     hat.position = tilemap.map_to_world(Vector2(5, 5))
-    hat.set_item_type(Globals.ItemType.HAT)
+    hat.set_item_type(Globals.WorldItem.HAT)
     add_child(hat)
 
     var torch = Item.instance()
     torch.position = tilemap.map_to_world(Vector2(10, 10))
-    torch.set_item_type(Globals.ItemType.TORCH)
+    torch.set_item_type(Globals.WorldItem.TORCH)
     add_child(torch)
 
 
@@ -58,3 +58,4 @@ func _unhandled_input(event):
 
 func on_item_picked_up(item):
     emit_signal("item_picked_up", item)
+    player.damage(50)
