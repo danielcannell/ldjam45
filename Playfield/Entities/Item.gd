@@ -10,11 +10,9 @@ const TEXTURES = {
 var type
 
 
-func set_item_type(t):
-    var sprite = get_node("ItemSprite")
-
+func set_type(t):
     type = t
-    sprite.set_texture(TEXTURES[type])
+    $ItemSprite.set_texture(TEXTURES[type])
 
 
 func _ready():
