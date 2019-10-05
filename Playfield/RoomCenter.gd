@@ -1,13 +1,12 @@
 extends Node2D
 
-const SPEED = 4
 
 onready var playfield = find_parent("Playfield")
-onready var camera = find_node("Camera2D")
+onready var camera = get_node("Camera2D")
 var targetzoom = 1.0
 var targetposition = Vector2(0, 0)
-
 var cell_size = Vector2(16, 16)
+
 
 func jump_to_room(room: Rect2):
     move_to_room(room)
@@ -46,7 +45,6 @@ func _physics_process(delta):
         if (((currentzoom <= targetzoom) and (currentzoom / targetzoom > 0.99)) or
             ((currentzoom >= targetzoom) and (targetzoom / currentzoom > 0.99))):
             z = targetzoom
-            print("jumpzoom")
         else:
             z = lerp(currentzoom, targetzoom, 0.1)
         camera.zoom = Vector2(z, z)
@@ -56,7 +54,6 @@ func _physics_process(delta):
         var pos = Vector2(0, 0)
         if ((currentpos - targetposition).length() < 0.25):
             pos = targetposition
-            print("jumppos")
         else:
             pos = lerp(currentpos, targetposition, 0.1)
         position = pos
