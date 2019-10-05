@@ -54,13 +54,27 @@ func on_item_picked_up(item):
     emit_signal("item_picked_up", item)
 
 
+func shoot():
+    var p = Projectile.instance()
+    p.init(Globals.Elements.FIRE, player.position, get_global_mouse_position(), 1e6)
+    add_child(p)
+
+
+func explode():
+    for i in range(Config.EXPLOSION_NUM_PROJECTILES):
+        var theta = (i * 6.283185307) / Config.EXPLOSION_NUM_PROJECTILES
+        var target = player.position + Vector2(cos(theta), sin(theta))
+        var p = Projectile.instance()
+        p.init(Globals.Elements.FIRE, player.position, target, Config.EXPLOSION_PROJECTILE_RANGE)
+        add_child(p)
+
+
 func activate_item():
     if item_cooldown < 1e-6:
         item_cooldown = 0.25
 
-        var p = Projectile.instance()
-        p.init(Globals.Elements.FIRE, player.position, get_global_mouse_position())
-        add_child(p)
+        # shoot()
+        explode()
 
 
 func _process(delta):

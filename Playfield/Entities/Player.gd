@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 
-var speed = 200
+var speed = 100
 var health = 100
 
 

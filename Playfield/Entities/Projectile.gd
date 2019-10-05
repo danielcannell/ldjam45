@@ -11,13 +11,16 @@ const TEXTURES = {
 
 var type
 var velocity = Vector2(200, 0)
+var ttl = 10000
+
 const SPEED = 200
 
 
-func init(t, pos, target):
+func init(t, pos, target, range_):
     type = t
     position = pos
     velocity = (target - pos).normalized() * SPEED
+    ttl = range_
 
     var sprite := $ProjectileSprite
     sprite.set_texture(TEXTURES[type])
@@ -32,7 +35,12 @@ func _ready():
 
 
 func _physics_process(delta):
-    position += velocity * delta
+    var pos_delta = velocity * delta
+    position += pos_delta
+
+    ttl -= pos_delta.length()
+    if ttl < 0:
+        queue_free()
 
 
 func _on_body_entered(body):
