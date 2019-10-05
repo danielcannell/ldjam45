@@ -55,19 +55,24 @@ func tile_is_boundary(tile: int) -> bool:
 
 
 # Fill all cells connected to the start cell with num.
-func flood_fill(pos: Vector2, num: int) -> void:
-    if pos.x < 0 or pos.x >= cells[0].size() or pos.y < 0 or pos.y >= cells.size():
-        return
-    var cell := get_cell(int(pos.x), int(pos.y))
-    if cell == WALL or cell == num:
-        return
+func flood_fill(start: Vector2, num: int) -> void:
+    var fill_queue: Array = []
+    fill_queue.append(start)
 
-    set_cell(int(pos.x), int(pos.y), num)
+    while fill_queue.size() > 0:
+        var pos = fill_queue.pop_back()
+        if pos.x < 0 or pos.x >= cells[0].size() or pos.y < 0 or pos.y >= cells.size():
+            continue
+        var cell := get_cell(int(pos.x), int(pos.y))
+        if cell == WALL or cell == num:
+            continue
 
-    flood_fill(Vector2(pos.x+1, pos.y), num)
-    flood_fill(Vector2(pos.x-1, pos.y), num)
-    flood_fill(Vector2(pos.x, pos.y+1), num)
-    flood_fill(Vector2(pos.x, pos.y-1), num)
+        set_cell(int(pos.x), int(pos.y), num)
+
+        fill_queue.append(Vector2(pos.x+1, pos.y))
+        fill_queue.append(Vector2(pos.x-1, pos.y))
+        fill_queue.append(Vector2(pos.x, pos.y+1))
+        fill_queue.append(Vector2(pos.x, pos.y-1))
 
 
 # Find the next unvisted cell in the grid, by going right then down from start.
