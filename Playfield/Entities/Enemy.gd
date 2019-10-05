@@ -8,7 +8,7 @@ onready var health_bar = $HealthBar
 
 
 func damage(dmg):
-    health -= dmg
+    health = max(0, health - dmg)
 
 
 func _process(delta):
