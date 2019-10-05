@@ -34,7 +34,6 @@ func _ready():
     var enemy = Enemy.instance()
     enemy.position = tilemap.map_to_world(Vector2(6, 2))
     add_child(enemy)
-    enemies.append(enemy)
 
     var hat = Item.instance()
     hat.position = tilemap.map_to_world(Vector2(5, 5))
