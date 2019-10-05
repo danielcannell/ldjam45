@@ -12,6 +12,7 @@ var rooms = []
 onready var tilemap = find_node("TileMap")
 onready var roomcenter = find_node("RoomCenter")
 
+
 func _init():
     var player = Player.instance()
     add_child(player)

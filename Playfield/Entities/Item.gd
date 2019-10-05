@@ -7,12 +7,11 @@ const TEXTURES = {
 }
 
 
-onready var sprite = get_node("./Sprite")
-
-
 var type = Globals.ItemType.NONE
 
 
 func set_item_type(t):
+    var sprite = get_node("ItemSprite")
+
     type = t
-    # sprite.set_texture(TEXTURES[type])
+    sprite.set_texture(TEXTURES[type])
