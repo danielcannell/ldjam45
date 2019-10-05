@@ -34,6 +34,13 @@ enum Constitution {
     _MAX
 }
 
+enum Dir {
+    LEFT,
+    RIGHT,
+    UP,
+    DOWN
+}
+
 enum Slots {
     HAT,
     RING1,
