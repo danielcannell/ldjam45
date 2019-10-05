@@ -14,6 +14,18 @@ region_rect = Rect2( 0, 0, 16, 16 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall1/StaticBody2D"]
 polygon = PoolVector2Array( -8, -8, 8, -8, 8, 8, -8, 8 )
 
+[node name="Door1" type="Sprite" parent="."]
+position = Vector2( 0, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 16, 16, 16 )
+
+[node name="Door2" type="Sprite" parent="."]
+position = Vector2( 16, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 16, 16, 16 )
+
 [node name="Sprite1" type="Sprite" parent="."]
 position = Vector2( 16, 0 )
 texture = ExtResource( 1 )
