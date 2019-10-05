@@ -8,3 +8,8 @@
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 16, 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall1"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall1/StaticBody2D"]
+polygon = PoolVector2Array( -8, -8, 8, -8, 8, 8, -8, 8 )
