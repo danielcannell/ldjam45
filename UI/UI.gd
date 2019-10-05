@@ -1,9 +1,12 @@
 extends Node2D
 
 
+const ComponentButton := preload("res://UI/ComponentButton.gd")
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    pass # Replace with function body.
+    update_components_list()
 
 
 func make_component_widget():
@@ -12,3 +15,6 @@ func make_component_widget():
 
 func update_components_list():
     var component_list := $CanvasLayer/Panel/VBoxContainer/ScrollContainer/ComponentList
+
+    var btn := ComponentButton.new()
+    component_list.add_child(btn)
