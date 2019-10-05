@@ -6,7 +6,7 @@
 [ext_resource path="res://Art/health_bar_progress.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 8 )
+extents = Vector2( 4.5, 7 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 z_index = 10
@@ -17,11 +17,13 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 8 )
+position = Vector2( 0, 9 )
 shape = SubResource( 1 )
 
 [node name="HealthBar" type="TextureProgress" parent="."]
 margin_left = -8.0
-margin_top = -16.0
+margin_top = -3.0
+margin_right = 8.0
+margin_bottom = 13.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 4 )
