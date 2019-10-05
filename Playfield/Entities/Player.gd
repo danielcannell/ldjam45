@@ -2,6 +2,14 @@ extends KinematicBody2D
 
 
 var speed = 10000
+var health = 100
+
+
+onready var health_bar = $HealthBar
+
+
+func damage(dmg):
+    health -= dmg
 
 
 func get_input():
@@ -26,3 +34,7 @@ func _ready():
 func _physics_process(delta):
     var velocity = get_input()
     move_and_slide(velocity * delta)
+
+
+func _process(delta):
+    health_bar.set_value(health)
