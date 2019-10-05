@@ -21,7 +21,7 @@ enum Foci {
 enum ComponentType {
     ELEMENT,
     CONSTITUTION,
-    
+
     _MAX
 }
 
@@ -60,7 +60,7 @@ enum Slots {
 enum ActionMode {
     ACTIVE,
     PASSIVE,
-    
+
     _MAX
 }
 

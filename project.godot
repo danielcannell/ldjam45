@@ -77,6 +77,10 @@ config/icon="res://icon.png"
 Globals="*res://Globals.gd"
 Config="*res://Config.gd"
 
+[display]
+
+window/size/resizable=false
+
 [input]
 
 player_left={
