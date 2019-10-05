@@ -11,7 +11,7 @@ signal item_picked_up
 
 var player
 var enemies = []
-var rooms = []
+var rooms = RoomBounds.new()
 
 var item_cooldown = 0
 
@@ -23,14 +23,11 @@ func _init():
     player = Player.instance()
     add_child(player)
 
-    rooms.append(Rect2(0, 0, 9, 9))
-    rooms.append(Rect2(8, 0, 11, 14))
-    rooms.append(Rect2(0, 8, 11, 10))
-
 
 func _ready():
+    rooms.compute_bounds(tilemap)
     roomcenter.cell_size = tilemap.cell_size
-    roomcenter.jump_to_room(rooms[0])
+    #roomcenter.jump_to_room(rooms[0])
 
     player.position = tilemap.map_to_world(Vector2(2, 2))
 
