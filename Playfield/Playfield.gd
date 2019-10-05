@@ -29,7 +29,7 @@ func _ready():
     rooms.compute_bounds(tilemap)
     roomcenter.cell_size = tilemap.cell_size
 
-    var player_start := Vector2(2, 2)
+    var player_start := Vector2(Config.PLAYER_START_X, Config.PLAYER_START_Y)
     player.position = tilemap.map_to_world(player_start)
 
     currentroom = rooms.get_containing_room(player_start)

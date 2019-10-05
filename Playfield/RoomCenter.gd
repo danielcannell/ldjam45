@@ -20,7 +20,7 @@ func move_to_room(room: Room) -> void:
     var width = size.x + 4
     var height = size.y + 4
 
-    # TODO work out screen size, in cells
+    # Work out screen size, in cells
     var vp_rect = get_viewport().get_visible_rect()
     var screenheight = vp_rect.size.y / cell_size.y
     var screenwidth = vp_rect.size.x / cell_size.x
