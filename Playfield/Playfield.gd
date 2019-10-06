@@ -53,20 +53,27 @@ func _ready():
     enemy.add_ai(AIWander.new(ai_manager, enemy, 1, 5, 8))
     add_child(enemy)
 
-    var hat = Item.instance()
-    hat.position = tilemap.map_to_world(Vector2(5, 5))
-    hat.set_type(Globals.WorldItem.HAT)
-    add_child(hat)
+    var world_items = [
+        Globals.WorldItem.STICK,
+        Globals.WorldItem.WAND,
+        Globals.WorldItem.STAFF,
+        Globals.WorldItem.HAT,
+        Globals.WorldItem.RING,
 
-    var torch = Item.instance()
-    torch.position = tilemap.map_to_world(Vector2(10, 10))
-    torch.set_type(Globals.WorldItem.TORCH)
-    add_child(torch)
+        Globals.WorldItem.FIRE,
+        Globals.WorldItem.WATER,
+        Globals.WorldItem.ROCK,
+        Globals.WorldItem.WIND,
 
-    var wand = Item.instance()
-    wand.position = tilemap.map_to_world(Vector2(11, 10))
-    wand.set_type(Globals.WorldItem.WAND)
-    add_child(wand)
+        #Globals.WorldItem.HEALTH,
+        #Globals.WorldItem.SPEED,
+    ]
+
+    for i in range(len(world_items)):
+        var item = Item.instance()
+        item.position = tilemap.map_to_world(Vector2(15 + 2 * i, 3))
+        item.set_type(world_items[i])
+        add_child(item)
 
 
 func on_item_picked_up(item):

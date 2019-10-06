@@ -2,9 +2,19 @@ extends Node
 
 # You can find these in the world
 enum WorldItem {
-    HAT,
-    TORCH,
+    STICK,
     WAND,
+    STAFF,
+    HAT,
+    RING,
+
+    FIRE,
+    WATER,
+    ROCK,
+    WIND,
+
+    HEALTH,
+    SPEED,
 
     _MAX,
 }
@@ -132,13 +142,29 @@ const ENCHANTED_FOCUS_IMAGES = {
     },
 }
 
+const WORLD_ITEM_IMAGES = {
+    WorldItem.STICK: preload("res://Art/foci/stick.png"),
+    WorldItem.WAND: preload("res://Art/foci/wand.png"),
+    WorldItem.STAFF: preload("res://Art/foci/staff.png"),
+    WorldItem.HAT: preload("res://Art/foci/hat.png"),
+    WorldItem.RING: preload("res://Art/foci/ring.png"),
+
+    WorldItem.FIRE: preload("res://Art/components/fire.png"),
+    WorldItem.WATER: preload("res://Art/components/water.png"),
+    WorldItem.ROCK: preload("res://Art/components/rock.png"),
+    WorldItem.WIND: preload("res://Art/components/wind.png"),
+
+    # WorldItem.HEALTH,
+    # WorldItem.SPEED,
+}
+
 # Names of unenchanted foci
 const FOCUS_NAMES = {
     Foci.STICK: "Stick",
-    Foci.WAND: "Wand",
-    Foci.STAFF: "Staff of Explosion",
-    Foci.HAT: "Hat of Enhancement",
-    Foci.RING: "Ring of Protection",
+    Foci.WAND: "Short pointy stick",
+    Foci.STAFF: "Long rugged stick",
+    Foci.HAT: "Floopy hat",
+    Foci.RING: "Gaudy ring",
 }
 
 const FOCUS_FLAVOUR = {
