@@ -21,6 +21,10 @@ func damage(dmg, type):
     emit_signal("damaged", self, dealt)
 
 
+func on_heal(amt):
+    emit_signal("damaged", self, -amt)
+
+
 func set_passives(rs, bs):
     health.set_passives(rs, bs)
 
@@ -47,7 +51,7 @@ func get_input():
 
 
 func _ready():
-    pass
+    health.connect("on_heal", self, "on_heal")
 
 
 func _physics_process(delta):

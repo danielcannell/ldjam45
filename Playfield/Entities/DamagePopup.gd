@@ -49,7 +49,7 @@ func _draw():
     else:
         color = Color(0, 0, 1, alpha)
 
-    var text: String = str(int(damage))
+    var text: String = str(abs(int(damage)))
     var str_size: Vector2 = Globals.damage_popup_font.get_string_size(text)
     var ascent: float = Globals.damage_popup_font.get_ascent()
     var str_width := str_size.x / 2

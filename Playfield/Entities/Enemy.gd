@@ -36,6 +36,7 @@ func _ready():
     health_bar.rect_position.x = -(health_bar.rect_size.x / 2)
     health_bar.rect_position.y = -(sprite_height / 2)
     collision.shape.radius = sprite_width / 2
+    health.connect("on_heal", self, "on_heal")
 
 
 func get_team():
@@ -50,6 +51,10 @@ func damage(dmg, type):
         queue_free()
 
     update()
+
+
+func on_heal(amt) -> void:
+    emit_signal("damaged", self, -amt)
 
 
 func add_ai(strategy: AIBase) -> void:
