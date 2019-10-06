@@ -13,9 +13,6 @@ enum WorldItem {
     ROCK,
     WIND,
 
-    HEALTH,
-    SPEED,
-
     _MAX,
 }
 
@@ -103,6 +100,8 @@ enum TutorialEvents {
 const ENEMY_IMAGES = {
     "grunt": preload("res://Art/grunt.png"),
     "evil_wizard": preload("res://Art/evil_wizard.png"),
+    "fire_elemental": preload("res://Art/fire_elemental.png"),
+    "water_elemental": preload("res://Art/water_elemental.png"),
 }
 
 const ELEMENT_IMAGES = {

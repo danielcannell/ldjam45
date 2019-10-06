@@ -52,8 +52,10 @@ func _ready():
     assert(currentroom != null)
     roomcenter.jump_to_room(currentroom)
 
-    add_enemy(EnemyTypes.evil_wizard(), 5, 5)
+    add_enemy(EnemyTypes.grunt(), 5, 5)
     add_enemy(EnemyTypes.evil_wizard(), 3, 3)
+
+    add_enemy(EnemyTypes.fire_elemental(), 3, 10)
 
     var world_items = [
         Globals.WorldItem.STICK,
@@ -66,9 +68,6 @@ func _ready():
         Globals.WorldItem.WATER,
         Globals.WorldItem.ROCK,
         Globals.WorldItem.WIND,
-
-        #Globals.WorldItem.HEALTH,
-        #Globals.WorldItem.SPEED,
     ]
 
     for i in range(len(world_items)):
