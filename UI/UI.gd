@@ -3,15 +3,18 @@ extends Node2D
 
 const ElementButton := preload("res://UI/ElementButton.gd")
 const FocusButton := preload("res://UI/FocusButton.gd")
-onready var focus_editor = $CanvasLayer2/FocusEditor
 
+
+onready var focus_editor = $CanvasLayer2/FocusEditor
 onready var death_popup = $CanvasLayer3/PopupPanel
 onready var dp_tutorial_check = $CanvasLayer3/PopupPanel/Panel/VBoxContainer/CheckBox
 onready var dp_restart_button = $CanvasLayer3/PopupPanel/Panel/VBoxContainer/HBoxContainer/RestartButton
 onready var dp_exit_button = $CanvasLayer3/PopupPanel/Panel/VBoxContainer/HBoxContainer/ExitButton
 
+
 func _ready():
     call_deferred("prepare_death_popup")
+
 
 func on_inventory_changed(elements, foci):
     update_elements_list(elements)
@@ -42,13 +45,17 @@ func update_focus_list(foci):
 
     focus_editor.update_view()
 
+
 func quit_game():
     get_tree().quit()
+
 
 func restart_game():
     Config.tutorial_on_restart = dp_tutorial_check.pressed
     Config.tutorial_active = dp_tutorial_check.pressed
     get_tree().reload_current_scene()
+    get_tree().paused = false
+
 
 func prepare_death_popup():
     if OS.get_name() == "HTML5":
@@ -57,5 +64,7 @@ func prepare_death_popup():
     dp_restart_button.connect("button_up", self, "restart_game")
     dp_tutorial_check.pressed = Config.tutorial_on_restart
 
+
 func on_player_death():
     death_popup.visible = true
+    get_tree().paused = true
