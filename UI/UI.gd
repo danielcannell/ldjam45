@@ -51,6 +51,8 @@ func restart_game():
     get_tree().reload_current_scene()
 
 func prepare_death_popup():
+    if OS.get_name() == "HTML5":
+        dp_exit_button.visible = false
     dp_exit_button.connect("button_up", self, "quit_game")
     dp_restart_button.connect("button_up", self, "restart_game")
     dp_tutorial_check.pressed = Config.tutorial_on_restart
