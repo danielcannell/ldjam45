@@ -71,3 +71,16 @@ enum Tiles {
 
     _MAX
 }
+
+const COMPONENT_IMAGES = {
+    ComponentType.ELEMENT: {
+        Elements.FIRE: preload("res://Art/fireball.png"),
+        Elements.WATER: preload("res://Art/fireball.png"),
+        Elements.WIND: preload("res://Art/fireball.png"),
+        Elements.ROCK: preload("res://Art/fireball.png"),
+    },
+    ComponentType.CONSTITUTION: {
+        Constitution.HEALTH: preload("res://Art/fireball.png"),
+        Constitution.SPEED: preload("res://Art/fireball.png"),
+    },
+}

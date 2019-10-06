@@ -5,6 +5,12 @@ const ComponentButton := preload("res://UI/ComponentButton.gd")
 const FocusButton := preload("res://UI/FocusButton.gd")
 
 
+var components := [
+    Component.new(Globals.ComponentType.ELEMENT, Globals.Elements.FIRE),
+    Component.new(Globals.ComponentType.ELEMENT, Globals.Elements.WATER),
+]
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     update_components_list()
@@ -14,8 +20,9 @@ func _ready():
 func update_components_list():
     var component_list := $CanvasLayer/Panel/VBoxContainer/ComponentContainer/ComponentList
 
-    var btn := ComponentButton.new()
-    component_list.add_child(btn)
+    for c in components:
+        var btn := ComponentButton.new(c)
+        component_list.add_child(btn)
 
 
 func update_focus_list():
