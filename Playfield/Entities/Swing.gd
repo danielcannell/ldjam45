@@ -48,5 +48,5 @@ func _on_body_entered(body):
 
     if body.has_method("damage") and not hits.has(body):
         # We have collided with an enemy!
-        body.damage(10)
+        body.damage(10, focus.damage_type())
         hits.append(body)

@@ -5,7 +5,6 @@ var speed = 100
 
 var health = Health.new()
 
-
 onready var health_bar = $HealthBar
 onready var hat = $Hat
 onready var sprite = $Sprite
@@ -15,8 +14,12 @@ func get_team():
     return Globals.Team.PLAYER
 
 
-func damage(dmg):
-    health.damage(dmg)
+func damage(dmg, type):
+    health.damage(dmg, type)
+
+
+func set_passives(rs, bs):
+    health.set_passives(rs, bs)
 
 
 func on_equip(focus):

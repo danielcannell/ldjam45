@@ -45,4 +45,4 @@ func _on_body_entered(body):
 
     if body.has_method("damage"):
         # We have collided with an enemy!
-        body.damage(10)
+        body.damage(10, type)

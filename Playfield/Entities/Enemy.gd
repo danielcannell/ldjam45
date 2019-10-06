@@ -35,8 +35,8 @@ func get_team():
     return Globals.Team.ENEMY
 
 
-func damage(dmg):
-    health.damage(dmg)
+func damage(dmg, type):
+    health.damage(dmg, type)
 
     if not health.alive():
         queue_free()

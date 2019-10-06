@@ -86,7 +86,7 @@ func on_equip_active(focus):
 
 
 func on_equip_passive(resistances, buffs):
-    pass
+    player.set_passives(resistances, buffs)
 
 
 func swing():
