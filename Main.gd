@@ -18,3 +18,5 @@ func _ready():
     magic.connect("passive", playfield, "on_equip_passive")
 
     playfield.connect("item_picked_up", magic, "_on_item_pickup")
+    
+    player.connect("player_death", ui, "on_player_death")

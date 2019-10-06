@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+signal player_death
 
 var health = Health.new()
 
@@ -63,3 +64,5 @@ func _physics_process(delta):
 func _process(delta):
     health.process(delta)
     health_bar.set_value(health.value)
+    if not health.alive():
+        emit_signal("player_death")

@@ -28,6 +28,6 @@ var player_buffs := {
 # If active is false, then the tutorial will not run.
 # If active is true, then the tutorial will run. Simples!
 var tutorial_active = true
-
+var tutorial_on_restart = true
 # Tutorial events we've already seen
 var tutorial_occurred = []

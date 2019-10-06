@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://UI/FocusEditor.gd" type="Script" id=2]
@@ -11,6 +11,11 @@ font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 14
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+extra_spacing_bottom = -10
 font_data = ExtResource( 3 )
 
 [node name="Node2D" type="Node2D"]
@@ -97,21 +102,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="FocusName" type="Label" parent="CanvasLayer2/FocusEditor/VBoxContainer"]
-anchor_right = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = 5.0
+margin_right = 605.0
+margin_bottom = 48.0
 custom_fonts/font = SubResource( 1 )
 text = "Focus Name"
 align = 1
 
 [node name="FocusFlavourText" type="Label" parent="CanvasLayer2/FocusEditor/VBoxContainer"]
-anchor_right = 1.0
-margin_left = 5.0
 margin_top = 52.0
-margin_right = -5.0
-margin_bottom = 75.0
+margin_right = 605.0
+margin_bottom = 69.0
 custom_fonts/font = SubResource( 2 )
 text = "Focus Flavour Text"
 align = 1
@@ -144,3 +144,69 @@ margin_right = 605.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 text = "Disenchant"
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="PopupPanel" type="PopupPanel" parent="CanvasLayer3"]
+pause_mode = 2
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 208.0
+margin_top = 190.0
+margin_right = -256.0
+margin_bottom = -114.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer3/PopupPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer3/PopupPanel/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+
+[node name="Label" type="Label" parent="CanvasLayer3/PopupPanel/Panel/VBoxContainer"]
+margin_right = 532.0
+margin_bottom = 216.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 3 )
+text = "You DIED....
+
+Would you like to go again?"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer3/PopupPanel/Panel/VBoxContainer"]
+margin_top = 220.0
+margin_right = 532.0
+margin_bottom = 240.0
+
+[node name="ExitButton" type="Button" parent="CanvasLayer3/PopupPanel/Panel/VBoxContainer/HBoxContainer"]
+margin_right = 264.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "NO"
+
+[node name="RestartButton" type="Button" parent="CanvasLayer3/PopupPanel/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 268.0
+margin_right = 532.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "YES"
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer3/PopupPanel/Panel/VBoxContainer"]
+margin_top = 244.0
+margin_right = 532.0
+margin_bottom = 268.0
+pressed = true
+text = "Enable Tutorial on Restart"
