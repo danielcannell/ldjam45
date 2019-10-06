@@ -109,6 +109,22 @@ const COMPONENT_IMAGES = {
     },
 }
 
+const FOCUS_IMAGES = {
+    Foci.STICK: preload("res://Art/foci/stick.png"),
+    Foci.WAND: preload("res://Art/foci/wand.png"),
+    Foci.STAFF: preload("res://Art/foci/staff.png"),
+    Foci.HAT: preload("res://Art/foci/hat.png"),
+    Foci.RING: preload("res://Art/foci/ring.png"),
+}
+
+# Special cased focus images
+const ENCHANTED_FOCUS_IMAGES = {
+    Foci.STICK: {
+        Elements.FIRE: preload("res://Art/foci/torch.png"),
+    },
+}
+
+# Names of unenchanted foci
 const FOCUS_NAMES = {
     Foci.STICK: "Stick",
     Foci.WAND: "Wand",
@@ -117,6 +133,7 @@ const FOCUS_NAMES = {
     Foci.RING: "Ring of Protection",
 }
 
+# Templates for formatting enchanted focus names
 const ENCHANTED_FOCUS_NAME_TEMPLATES = {
     Foci.STICK: "Stick of %s",
     Foci.WAND: "Wand of %s",
@@ -125,6 +142,7 @@ const ENCHANTED_FOCUS_NAME_TEMPLATES = {
     Foci.RING: "Ring of %s Protection",
 }
 
+# Special cased focus names
 const ENCHANTED_FOCUS_NAMES = {
     Foci.STICK: {
         Elements.FIRE: "Torch",

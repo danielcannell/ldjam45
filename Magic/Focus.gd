@@ -16,7 +16,12 @@ func _init(type: int, subtype: int, action: Action, component: Component, power:
 
 
 func image():
-    pass
+    if component != null:
+        if Globals.ENCHANTED_FOCUS_IMAGES.has(subtype):
+            if Globals.ENCHANTED_FOCUS_IMAGES[subtype].has(component.subtype):
+                return Globals.ENCHANTED_FOCUS_IMAGES[subtype][component.subtype]
+
+    return Globals.FOCUS_IMAGES[self.subtype]
 
 
 func name():

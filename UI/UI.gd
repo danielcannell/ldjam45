@@ -39,6 +39,6 @@ func update_focus_list():
     var focus_list := $CanvasLayer/Panel/VBoxContainer/FociContainer/FociList
 
     for f in foci:
-        var btn := FocusButton.new()
+        var btn := FocusButton.new(f)
         btn.connect("button_down", $CanvasLayer/FocusEditor, "show_focus", [f])
         focus_list.add_child(btn)
