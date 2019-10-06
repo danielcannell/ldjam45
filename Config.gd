@@ -9,7 +9,7 @@ const PLAYER_START_Y = 3
 const PLAYER_SPEED = 100
 const HEAL_RATE = 10
 const DAMAGE_REDUCTION_FACTOR = 1
-const Config.SPEED_BOOST_FACTOR = 1
+const SPEED_BOOST_FACTOR = 1
 
 var player_resistances := {
     Globals.Elements.FIRE: 1.0,
