@@ -3,7 +3,7 @@ extends Node2D
 
 const ComponentButton := preload("res://UI/ComponentButton.gd")
 const FocusButton := preload("res://UI/FocusButton.gd")
-onready var focus_editor = $CanvasLayer/FocusEditor
+onready var focus_editor = $CanvasLayer2/FocusEditor
 
 
 func on_inventory_changed(components, foci):
@@ -35,7 +35,7 @@ func update_focus_list(foci):
 
     for f in foci:
         var btn := FocusButton.new(f)
-        btn.connect("button_down", $CanvasLayer/FocusEditor, "show_focus", [f])
+        btn.connect("button_down", focus_editor, "show_focus", [f])
         focus_list.add_child(btn)
 
     focus_editor.update_view()

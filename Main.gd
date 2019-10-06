@@ -4,7 +4,7 @@ extends Node2D
 onready var playfield = $ViewportContainer/Viewport/Playfield
 onready var player = $ViewportContainer/Viewport/Playfield.player
 onready var magic = $Magic
-onready var focus_editor = $UI/CanvasLayer/FocusEditor
+onready var focus_editor = $UI/CanvasLayer2/FocusEditor
 onready var ui = $UI
 
 
