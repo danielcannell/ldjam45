@@ -56,6 +56,7 @@ func _ready():
     add_enemy(EnemyTypes.evil_wizard(), 3, 3)
 
     add_enemy(EnemyTypes.fire_elemental(), 3, 10)
+    add_enemy(EnemyTypes.water_elemental(), 6, 10)
 
     var world_items = [
         Globals.WorldItem.STICK,

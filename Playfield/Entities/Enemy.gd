@@ -162,5 +162,13 @@ func _physics_process(delta):
         elif current_goal.type == GoalHelpers.Type.GO_TO:
             # Move toward the target
             var diff: Vector2 = current_goal.position - position
-            var dir := diff.normalized() * movement_speed
-            move_and_slide(dir)
+            var diff_len = diff.length()
+
+            if diff_len > 1e-6:
+                var dir := diff.normalized() * movement_speed
+
+                var progress = dir.length() * delta / diff_len
+                if progress > 1:
+                    dir *= 1 / progress
+
+                move_and_slide(dir)
