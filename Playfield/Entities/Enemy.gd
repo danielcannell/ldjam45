@@ -56,6 +56,20 @@ func add_ai(strategy: AIBase) -> void:
     ai.append(strategy)
 
 
+func set_passives(resistances, weaknesses, buffs):
+    var rs = Config.player_resistances.duplicate()
+    var bs = Config.player_buffs.duplicate()
+
+    for elem in resistances:
+        rs[elem] = 0.0
+    for elem in weaknesses:
+        rs[elem] = 2.0
+    for elem in buffs:
+        bs[elem] = 2.0
+
+    health.set_passives(rs, bs)
+
+
 func _draw():
     health_bar.set_value(health.value)
 

@@ -49,6 +49,8 @@ static func fire_elemental() -> Enemy:
     enemy.add_ai(AISpellcaster.new(Globals.ai_manager, enemy, aggro_distance, lose_sight_distance, attack_range, keep_away_distance))
     enemy.add_ai(AIWander.new(Globals.ai_manager, enemy, 1, 5, 8))
 
+    enemy.set_passives([Globals.Elements.FIRE], [Globals.Elements.WATER], [])
+
     enemy.movement_speed = 10.0
     enemy.image = Globals.ENEMY_IMAGES["fire_elemental"]
     enemy.sprite_width = 17.0
@@ -67,6 +69,8 @@ static func water_elemental() -> Enemy:
 
     enemy.add_ai(AISpellcaster.new(Globals.ai_manager, enemy, aggro_distance, lose_sight_distance, attack_range, keep_away_distance))
     enemy.add_ai(AIWander.new(Globals.ai_manager, enemy, 1, 5, 8))
+
+    enemy.set_passives([Globals.Elements.WATER], [Globals.Elements.WIND], [])
 
     enemy.movement_speed = 10.0
     enemy.image = Globals.ENEMY_IMAGES["water_elemental"]
