@@ -71,3 +71,8 @@ enum Tiles {
 
     _MAX
 }
+
+enum TutorialEvents {
+    DEMO_MESSAGE_EVENT,
+    DEMO_ACTION_EVENT,
+}

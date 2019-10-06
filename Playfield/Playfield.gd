@@ -8,6 +8,7 @@ const Projectile = preload("res://Playfield/Entities/Projectile.tscn")
 
 
 signal item_picked_up
+signal tutorial_event
 
 var player
 var enemies = []
@@ -53,6 +54,7 @@ func _ready():
 
 func on_item_picked_up(item):
     emit_signal("item_picked_up", item)
+    emit_signal("tutorial_event", Globals.TutorialEvents.DEMO_MESSAGE_EVENT)
 
 
 func shoot():
