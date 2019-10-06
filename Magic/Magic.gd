@@ -12,16 +12,16 @@ var status_effects = StatusEffects.new()
 func _ready():
     pass # Replace with function body.
 
-func get_active_components() -> Array:
-    var active_components := []
+func get_active_elements() -> Array:
+    var active_elements := []
     for focus in self.inventory.active_foci.values():
-        if focus != null and focus.component != null:
-            active_components.append(focus.component)
-    return active_components
+        if focus != null and focus.element != null:
+            active_elements.append(focus.element)
+    return active_elements
 
 func _emit_inventory_changed():
-    var comp_list: Array = self.inventory.inactive_components.duplicate()
-    comp_list.sort_custom(Comparators, "component")
+    var comp_list: Array = self.inventory.inactive_elements.duplicate()
+    comp_list.sort_custom(Comparators, "element")
     var foci_list: Array = self.inventory.all_foci.duplicate()
     foci_list.sort_custom(Comparators, "focus")
     emit_signal("inventory_changed", comp_list, foci_list)
@@ -61,18 +61,18 @@ func _on_focus_equip(focus: Focus):
             emit_signal("passive", resistances, buffs)
     _emit_inventory_changed()
 
-func _on_enchant(focus: Focus, component: Component):
+func _on_enchant(focus: Focus, element: Element):
     assert self.inventory.all_foci.has(focus)
-    assert self.inventory.inactive_components.has(component)
+    assert self.inventory.inactive_elements.has(element)
 
-    focus.component = component
-    self.inventory.inactive_components.erase(component)
+    focus.element = element
+    self.inventory.inactive_elements.erase(element)
     _emit_inventory_changed()
 
 func _on_disenchant(focus: Focus):
     assert self.inventory.all_foci.has(focus)
-    assert focus.component != null
+    assert focus.element != null
 
-    self.inventory.inactive_components.append(focus.component)
-    focus.component = null
+    self.inventory.inactive_elements.append(focus.element)
+    focus.element = null
     _emit_inventory_changed()
