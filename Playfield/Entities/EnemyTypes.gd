@@ -15,7 +15,7 @@ static func grunt() -> Enemy:
     enemy.image = Globals.ENEMY_IMAGES["grunt"]
     enemy.sprite_width = 14.0
     enemy.sprite_height = 16.0
-    var rock: Component = Component.new(Globals.ComponentType.ELEMENT, Globals.Elements.ROCK)
+    var rock: Element = Element.new(Globals.Elements.ROCK)
     enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STICK, rock, 1.0)
     return enemy
 
@@ -34,6 +34,6 @@ static func evil_wizard() -> Enemy:
     enemy.image = Globals.ENEMY_IMAGES["evil_wizard"]
     enemy.sprite_width = 14.0
     enemy.sprite_height = 16.0
-    var type: Component = Component.new(Globals.ComponentType.ELEMENT, Globals.Elements.FIRE)
+    var type: Element = Element.new(Globals.Elements.FIRE)
     enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STICK, type, 1.0)
     return enemy

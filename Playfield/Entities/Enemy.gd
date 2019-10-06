@@ -113,7 +113,7 @@ func attack(target: Node2D) -> void:
             s.position = Vector2(sign(dir.x) * 4, 4)
     elif current_goal.type == GoalHelpers.Type.ATTACK_SHOOT:
         var p = Projectile.instance()
-        p.init(weapon.component.subtype, position, target.position, 1e6)
+        p.init(weapon.element.type, position, target.position, 1e6)
         p.team = Globals.Team.ENEMY
         playfield.add_child(p)
     else:
