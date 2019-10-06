@@ -19,6 +19,7 @@ var item_cooldown = 0
 
 onready var tilemap = find_node("TileMap")
 onready var roomcenter = find_node("RoomCenter")
+onready var ai_manager = $AI
 
 
 const DEBUG_ROOM_BOUNDS = false
@@ -30,6 +31,9 @@ func _init():
 
 
 func _ready():
+    ai_manager.playfield = self
+    ai_manager.player = player
+
     rooms.compute_bounds(tilemap)
     roomcenter.cell_size = tilemap.cell_size
 
@@ -41,7 +45,9 @@ func _ready():
     roomcenter.jump_to_room(currentroom)
 
     var enemy = Enemy.instance()
-    enemy.position = tilemap.map_to_world(Vector2(6, 2))
+    enemy.position = tilemap.map_to_world(Vector2(3, 3))
+    enemy.add_ai(AICharge.new(ai_manager, enemy, 32, 64, 16))
+    enemy.add_ai(AIWander.new(ai_manager, enemy, 1, 5, 8))
     add_child(enemy)
 
     var hat = Item.instance()
