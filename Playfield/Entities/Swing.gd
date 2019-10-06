@@ -4,6 +4,7 @@ var focus
 var velocity: float = 0
 var team = Globals.Team.PLAYER
 var ttl: float = 0
+var hits: Array = []
 
 # Angular speed, deg/s
 const SPEED: float = 600.0
@@ -45,7 +46,7 @@ func _on_body_entered(body):
         if body.get_team() == team:
             return
 
-    if body.has_method("damage"):
+    if body.has_method("damage") and not hits.has(body):
         # We have collided with an enemy!
         body.damage(10)
-        queue_free()
+        hits.append(body)

@@ -14,8 +14,22 @@ const DEBUG_AI_GOAL = true
 var current_goal = null
 var next_attack_time: float = 0
 var time: float = 0
+var image: Texture = null
+var sprite_width: float = 0
+var sprite_height: float = 0
 
 onready var health_bar = $HealthBar
+onready var sprite = $Sprite
+onready var collision = $CollisionShape2D
+
+
+func _ready():
+    sprite.set_texture(image)
+    health_bar.rect_size.x = sprite_width
+    health_bar.rect_position.x = -(health_bar.rect_size.x / 2)
+    health_bar.rect_position.y = -(sprite_height / 2)
+    collision.shape.radius = sprite_width / 2
+
 
 func get_team():
     return Globals.Team.ENEMY
