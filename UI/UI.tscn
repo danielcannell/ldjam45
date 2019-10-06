@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://UI/UI.gd" type="Script" id=1]
-[ext_resource path="res://Art/hat.png" type="Texture" id=2]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -33,13 +32,13 @@ margin_top = 18.0
 margin_right = 170.0
 margin_bottom = 22.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="ComponentContainer" type="ScrollContainer" parent="CanvasLayer/Panel/VBoxContainer"]
 margin_top = 26.0
 margin_right = 170.0
 margin_bottom = 293.0
 size_flags_vertical = 3
 
-[node name="ComponentList" type="VBoxContainer" parent="CanvasLayer/Panel/VBoxContainer/ScrollContainer"]
+[node name="ComponentList" type="VBoxContainer" parent="CanvasLayer/Panel/VBoxContainer/ComponentContainer"]
 margin_right = 170.0
 margin_bottom = 267.0
 size_flags_horizontal = 3
@@ -56,22 +55,20 @@ margin_top = 315.0
 margin_right = 170.0
 margin_bottom = 319.0
 
-[node name="ScrollContainer2" type="ScrollContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="FociContainer" type="ScrollContainer" parent="CanvasLayer/Panel/VBoxContainer"]
 margin_top = 323.0
 margin_right = 170.0
 margin_bottom = 590.0
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/VBoxContainer/ScrollContainer2"]
+[node name="FociList" type="VBoxContainer" parent="CanvasLayer/Panel/VBoxContainer/FociContainer"]
 margin_right = 170.0
 margin_bottom = 267.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Panel/VBoxContainer/ScrollContainer2/VBoxContainer"]
-margin_right = 170.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-texture_normal = ExtResource( 2 )
-expand = true
-stretch_mode = 5
+[node name="FocusEditor" type="WindowDialog" parent="CanvasLayer"]
+margin_left = 129.894
+margin_top = 100.093
+margin_right = 734.894
+margin_bottom = 485.093
