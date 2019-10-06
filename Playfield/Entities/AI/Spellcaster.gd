@@ -31,7 +31,7 @@ func think():
             var dir := diff.normalized()
             return GoalHelpers.go_to(get_pos() - (dir * 1000))
         elif dist < attack_range:
-            return GoalHelpers.attack(tracking_player)
+            return GoalHelpers.attack(tracking_player, true)
         elif dist > lose_sight_range:
             tracking_player = null
             return GoalHelpers.idle()
