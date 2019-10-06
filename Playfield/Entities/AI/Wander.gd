@@ -12,7 +12,6 @@ enum State {
 }
 
 
-var new_dest := true
 var next_time = 0
 var target_pos = Vector2(0, 0)
 var current_room = null

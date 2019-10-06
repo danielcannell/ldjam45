@@ -36,7 +36,7 @@ func _draw():
             draw_line(Vector2(0,0), current_goal.target.position - position, Color.red, 2)
 
 
-func _physics_process(delta):
+func get_new_ai_goal() -> void:
     var goals: Array = []
     for i in range(ai.size()):
         var goal: GoalHelpers.AIGoal = ai[i].think()
@@ -46,22 +46,17 @@ func _physics_process(delta):
     var ai_in_use: int = -1
     for i in range(goals.size()):
         var goal = goals[i]
-        current_goal = goal
         if goal.type == GoalHelpers.Type.IDLE:
             continue
+
         elif goal.type == GoalHelpers.Type.ATTACK:
-            # Attack enemy
-            ai_in_use = i
+            current_goal = goal
             break
+
         elif goal.type == GoalHelpers.Type.GO_TO:
-            # Move toward the target
-            var diff: Vector2 = goal.position - position
-            var dir := diff.normalized() * movement_speed
-            if dir.length_squared() > diff.length_squared():
-                dir = diff
-            move_and_slide(dir)
-            ai_in_use = i
+            current_goal = goal
             break
+
         else:
             assert(false)
 
@@ -69,8 +64,25 @@ func _physics_process(delta):
         current_goal = null
 
     for i in range(ai.size()):
-        if i != ai_in_use:
+        if goals[i] != current_goal:
             ai[i].go_idle()
 
     if DEBUG_AI_GOAL:
         update()
+
+
+func _physics_process(delta):
+    get_new_ai_goal()
+
+    if current_goal:
+        if current_goal.type == GoalHelpers.Type.ATTACK:
+            # Attack enemy
+            pass
+
+        elif current_goal.type == GoalHelpers.Type.GO_TO:
+            # Move toward the target
+            var diff: Vector2 = current_goal.position - position
+            var dir := diff.normalized() * movement_speed
+            if dir.length_squared() > diff.length_squared():
+                dir = diff
+            move_and_slide(dir)
