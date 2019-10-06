@@ -64,9 +64,15 @@ func _on_focus_equip(focus: Focus):
 func _on_enchant(focus: Focus, component: Component):
     assert self.inventory.all_foci.has(focus)
     assert self.inventory.inactive_components.has(component)
+
     focus.component = component
     self.inventory.inactive_components.erase(component)
     _emit_inventory_changed()
 
 func _on_disenchant(focus: Focus):
-    pass
+    assert self.inventory.all_foci.has(focus)
+    assert focus.component != null
+
+    self.inventory.inactive_components.append(focus.component)
+    focus.component = null
+    _emit_inventory_changed()

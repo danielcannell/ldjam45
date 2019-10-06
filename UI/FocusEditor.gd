@@ -36,6 +36,7 @@ func update_view():
     focus_flavour_text.text = focus.flavour_text()
     focus_image.texture = focus.image()
     equip_button.disabled = focus.active
+    disenchant_button.disabled = focus.component == null
 
 
 func on_equip():
