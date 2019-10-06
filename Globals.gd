@@ -8,6 +8,14 @@ enum WorldItem {
     _MAX,
 }
 
+enum FocusType {
+    HAT,
+    RING,
+    WEAPON,
+    
+    _MAX
+}
+
 enum Foci {
     STICK,  # Hits things (Element slot)
     WAND,   # Shoots things (Element slot)
@@ -61,6 +69,17 @@ enum ActionMode {
     ACTIVE,
     PASSIVE,
 
+    _MAX
+}
+
+enum Action {
+    RESIST,
+    MULTIPLIER,
+    HIT,
+    PROJECT,
+    EXPLODE,
+    PROJECT_EXPLODE,
+    
     _MAX
 }
 

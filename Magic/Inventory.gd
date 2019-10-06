@@ -1,9 +1,9 @@
 extends Node
 class_name Inventory
 
-var ItemsByName = preload("ItemsByName.gd").new()
+# Hack to have public static 
+var ActionsByName = preload("ActionsByName.gd").new()
 var StatusEffects = preload("StatusEffects.gd").new()
-var Focus = preload("Focus.gd")
 
 signal passive
 signal active
@@ -16,26 +16,25 @@ var active_foci := {
 }
 
 var inactive_foci := []
-var components := []
 
-func _ready():
-    connect("item_picked_up", self, "_on_item_pickup")
-    # connect("item_activate", self, "_on_focus_activate")
-    # connect("item_deactivate", self, "_on_item_deactivate")
-    # connect("item_drop", self, "_on_item_drop")
+var active_components := []
 
-func _on_item_pickup(item_type: String):
-    var item = ItemsByName.world_items[item_type].duplicate()
-    if item != null:
-        self.inactive_foci.append(item)
-        print(item_type)
-    else:
-        print("Invalid ItemType: %d" % item_type)
+var inactive_components := []
 
-func _on_focus_activate(f: Focus):
-    match f.action.mode:
-        Focus.Mode.PASSIVE:
-            # calculate_passives()
-            emit_signal("passive", StatusEffects.resistances, StatusEffects.buffs)
-        Focus.Mode.ACTIVE:
-            print("s")
+func _on_item_pickup(item_type: int):
+    match item_type:
+        Globals.WorldItem.HAT:
+            inactive_foci.append(Focus.new(Globals.FocusType.HAT, item_type, ActionsByName.MULTIPLIER, null, 1.0))
+        Globals.WorldItem.TORCH:
+            var inner_comp = Component.new(Globals.ComponentType.ELEMENT, Globals.Elements.FIRE)
+            inactive_foci.append(Focus.new(Globals.FocusType.WEAPON, item_type, ActionsByName.HIT, inner_comp, 1.0))
+        _:
+            print("Unknown WorldItem %d" % item_type)
+
+func _on_focus_equip(f: Focus):
+    match f.type:
+        Globals.FocusType.HAT:
+            inactive_foci.append(active_foci.HAT)
+            active_foci.HAT = f
+        Globals.FocusType.RING:
+            pass

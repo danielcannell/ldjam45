@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Magic/Component.gd"
 }, {
-"base": "Item",
+"base": "Reference",
 "class": "Focus",
 "language": "GDScript",
 "path": "res://Magic/Focus.gd"
@@ -28,16 +28,6 @@ _global_script_classes=[ {
 "class": "Inventory",
 "language": "GDScript",
 "path": "res://Magic/Inventory.gd"
-}, {
-"base": "Node",
-"class": "Item",
-"language": "GDScript",
-"path": "res://Magic/Item.gd"
-}, {
-"base": "Node",
-"class": "ItemsByName",
-"language": "GDScript",
-"path": "res://Magic/ItemsByName.gd"
 }, {
 "base": "Reference",
 "class": "Room",
@@ -59,8 +49,6 @@ _global_script_class_icons={
 "Component": "",
 "Focus": "",
 "Inventory": "",
-"Item": "",
-"ItemsByName": "",
 "Room": "",
 "RoomBounds": "",
 "StatusEffects": ""
