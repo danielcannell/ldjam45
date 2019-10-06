@@ -18,15 +18,15 @@ var base_foci := {
 }
 
 var element_components := {
-    Globals.Elements.FIRE: Component.new("Fire", {"default": "It's HOT"}, Globals.ComponentType.ELEMENT),
-    Globals.Elements.WATER: Component.new("Water", {"default": "Wet"}, Globals.ComponentType.ELEMENT),
-    Globals.Elements.WIND: Component.new("Wind", {"default": "Windy"}, Globals.ComponentType.ELEMENT),
-    Globals.Elements.ROCK: Component.new("Rock", {"default": "Hard"}, Globals.ComponentType.ELEMENT)
+    Globals.Elements.FIRE: Component.new(Globals.ComponentType.ELEMENT, Globals.Elements.FIRE),
+    Globals.Elements.WATER: Component.new(Globals.ComponentType.ELEMENT, Globals.Elements.WATER),
+    Globals.Elements.WIND: Component.new(Globals.ComponentType.ELEMENT, Globals.Elements.WIND),
+    Globals.Elements.ROCK: Component.new(Globals.ComponentType.ELEMENT, Globals.Elements.ROCK)
 }
 
 var constitution_components := {
-    Globals.Constitution.HEALTH: Component.new("Damage Resistance", {"default": "Feeling tough?!?"}, Globals.ComponentType.CONSTITUTION),
-    Globals.Constitution.SPEED: Component.new("Speed", {"default": "Faster!!!"}, Globals.ComponentType.CONSTITUTION)
+    Globals.Constitution.HEALTH: Component.new(Globals.ComponentType.CONSTITUTION, Globals.Constitution.HEALTH),
+    Globals.Constitution.SPEED: Component.new(Globals.ComponentType.CONSTITUTION, Globals.Constitution.SPEED)
 }
 
 var world_items := {

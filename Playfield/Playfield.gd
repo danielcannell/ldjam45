@@ -21,6 +21,9 @@ onready var tilemap = find_node("TileMap")
 onready var roomcenter = find_node("RoomCenter")
 
 
+const DEBUG_ROOM_BOUNDS = false
+
+
 func _init():
     player = Player.instance()
     add_child(player)
@@ -91,3 +94,19 @@ func _process(delta):
     if playerroom != null:
         currentroom = playerroom
         roomcenter.move_to_room(playerroom)
+
+    if DEBUG_ROOM_BOUNDS:
+        update()
+
+
+func _draw():
+    if DEBUG_ROOM_BOUNDS:
+        var colors = [Color.red, Color.blue, Color.green, Color.yellow, Color.orange, Color.purple, Color.aqua, Color.darkcyan, Color.darkgreen, Color.lightblue]
+        for i in range(rooms.rooms.size()):
+            var points := PoolVector2Array()
+            var room: Room = rooms.rooms[i]
+            var zoom: float = tilemap.cell_size.x
+            for point in room.points:
+                points.append(point * zoom)
+            points.append(room.points[0] * zoom)
+            draw_polyline(points, colors[i])
