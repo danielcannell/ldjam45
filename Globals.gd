@@ -72,6 +72,11 @@ enum Tiles {
     _MAX
 }
 
+enum TutorialEvents {
+    DEMO_MESSAGE_EVENT,
+    DEMO_ACTION_EVENT,
+}
+
 const COMPONENT_IMAGES = {
     ComponentType.ELEMENT: {
         Elements.FIRE: preload("res://Art/components/fire.png"),
