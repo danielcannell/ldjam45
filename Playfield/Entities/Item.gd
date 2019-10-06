@@ -1,19 +1,12 @@
 extends Area2D
 
 
-const TEXTURES = {
-    Globals.WorldItem.HAT: preload("res://Art/foci/hat.png"),
-    Globals.WorldItem.TORCH: preload("res://Art/foci/torch.png"),
-    Globals.WorldItem.WAND: preload("res://Art/foci/wand.png"),
-}
-
-
 var type
 
 
 func set_type(t):
     type = t
-    $ItemSprite.set_texture(TEXTURES[type])
+    $ItemSprite.set_texture(Globals.WORLD_ITEM_IMAGES[type])
 
 
 func _ready():

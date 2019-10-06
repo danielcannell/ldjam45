@@ -55,6 +55,11 @@ _global_script_classes=[ {
 "path": "res://Playfield/Entities/Enemy.gd"
 }, {
 "base": "Reference",
+"class": "EnemyTypes",
+"language": "GDScript",
+"path": "res://Playfield/Entities/EnemyTypes.gd"
+}, {
+"base": "Reference",
 "class": "Focus",
 "language": "GDScript",
 "path": "res://Magic/Focus.gd"
@@ -94,6 +99,7 @@ _global_script_class_icons={
 "Comparators": "",
 "Component": "",
 "Enemy": "",
+"EnemyTypes": "",
 "Focus": "",
 "GoalHelpers": "",
 "Inventory": "",
