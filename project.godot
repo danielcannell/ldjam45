@@ -9,6 +9,26 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "AIBase",
+"language": "GDScript",
+"path": "res://Playfield/Entities/AI/Base.gd"
+}, {
+"base": "AIBase",
+"class": "AICharge",
+"language": "GDScript",
+"path": "res://Playfield/Entities/AI/Charge.gd"
+}, {
+"base": "Node",
+"class": "AIManager",
+"language": "GDScript",
+"path": "res://Playfield/Entities/AI/Manager.gd"
+}, {
+"base": "AIBase",
+"class": "AIWander",
+"language": "GDScript",
+"path": "res://Playfield/Entities/AI/Wander.gd"
+}, {
 "base": "Node",
 "class": "Action",
 "language": "GDScript",
@@ -19,10 +39,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Magic/Component.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Playfield/Entities/Enemy.gd"
+}, {
 "base": "Reference",
 "class": "Focus",
 "language": "GDScript",
 "path": "res://Magic/Focus.gd"
+}, {
+"base": "Reference",
+"class": "GoalHelpers",
+"language": "GDScript",
+"path": "res://Playfield/Entities/AI/Goal.gd"
 }, {
 "base": "Node",
 "class": "Inventory",
@@ -45,9 +75,15 @@ _global_script_classes=[ {
 "path": "res://Magic/StatusEffects.gd"
 } ]
 _global_script_class_icons={
+"AIBase": "",
+"AICharge": "",
+"AIManager": "",
+"AIWander": "",
 "Action": "",
 "Component": "",
+"Enemy": "",
 "Focus": "",
+"GoalHelpers": "",
 "Inventory": "",
 "Room": "",
 "RoomBounds": "",
