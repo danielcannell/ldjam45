@@ -19,13 +19,9 @@ func damage(dmg):
 
 
 func on_equip(focus):
-    var hat_equipped= (focus.type == Globals.FocusType.HAT)
-    hat.visible = hat_equipped
-
-    if hat_equipped:
+    if focus.type == Globals.FocusType.HAT:
+        hat.visible = true
         health_bar.rect_position.y = -23
-    else:
-        health_bar.rect_position.y = -11
 
 
 func get_input():
