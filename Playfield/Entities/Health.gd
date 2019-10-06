@@ -14,13 +14,14 @@ func set_passives(rs, bs):
     buffs = bs
 
 
-func damage(dmg, type):
+func damage(dmg, type) -> float:
     if type < Globals.Elements._MAX:
         dmg *= self.resistances[type]
 
     dmg /= Config.DAMAGE_REDUCTION_FACTOR * float(buffs[Globals.Elements.ROCK])
 
     value = max(0, value - dmg)
+    return dmg
 
 
 func alive():

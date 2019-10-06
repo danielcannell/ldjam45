@@ -1,7 +1,11 @@
 extends KinematicBody2D
 class_name Enemy
 
-var health = Health.new()
+
+signal damaged
+
+
+var health := Health.new()
 
 var ai: Array = []
 
@@ -39,7 +43,8 @@ func get_team():
 
 
 func damage(dmg, type):
-    health.damage(dmg, type)
+    var dealt := health.damage(dmg, type)
+    emit_signal("damaged", self, dealt)
 
     if not health.alive():
         queue_free()
