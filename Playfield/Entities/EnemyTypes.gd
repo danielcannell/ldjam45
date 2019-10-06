@@ -13,7 +13,7 @@ static func grunt() -> Enemy:
 
     enemy.movement_speed = 120.0
     enemy.image = Globals.ENEMY_IMAGES["grunt"]
-    enemy.sprite_width = 12.0
+    enemy.sprite_width = 14.0
     enemy.sprite_height = 16.0
     var rock: Component = Component.new(Globals.ComponentType.ELEMENT, Globals.Elements.ROCK)
     enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STICK, rock, 1.0)
@@ -32,7 +32,7 @@ static func evil_wizard() -> Enemy:
 
     enemy.movement_speed = 100.0
     enemy.image = Globals.ENEMY_IMAGES["evil_wizard"]
-    enemy.sprite_width = 12.0
+    enemy.sprite_width = 14.0
     enemy.sprite_height = 16.0
     var type: Component = Component.new(Globals.ComponentType.ELEMENT, Globals.Elements.FIRE)
     enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STICK, type, 1.0)
