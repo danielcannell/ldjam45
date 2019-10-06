@@ -8,6 +8,8 @@ const FocusButton := preload("res://UI/FocusButton.gd")
 var components := [
     Component.new(Globals.ComponentType.ELEMENT, Globals.Elements.FIRE),
     Component.new(Globals.ComponentType.ELEMENT, Globals.Elements.WATER),
+    Component.new(Globals.ComponentType.ELEMENT, Globals.Elements.WIND),
+    Component.new(Globals.ComponentType.ELEMENT, Globals.Elements.ROCK),
 ]
 
 
