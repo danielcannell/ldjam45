@@ -45,9 +45,9 @@ _global_script_classes=[ {
 "path": "res://Magic/Comparators.gd"
 }, {
 "base": "Reference",
-"class": "Component",
+"class": "Element",
 "language": "GDScript",
-"path": "res://Magic/Component.gd"
+"path": "res://Magic/Element.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Enemy",
@@ -102,7 +102,7 @@ _global_script_class_icons={
 "AIWander": "",
 "Actions": "",
 "Comparators": "",
-"Component": "",
+"Element": "",
 "Enemy": "",
 "EnemyTypes": "",
 "Focus": "",

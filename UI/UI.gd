@@ -1,13 +1,13 @@
 extends Node2D
 
 
-const ComponentButton := preload("res://UI/ComponentButton.gd")
+const ElementButton := preload("res://UI/ElementButton.gd")
 const FocusButton := preload("res://UI/FocusButton.gd")
 onready var focus_editor = $CanvasLayer2/FocusEditor
 
 
-func on_inventory_changed(components, foci):
-    update_components_list(components)
+func on_inventory_changed(elements, foci):
+    update_elements_list(elements)
     update_focus_list(foci)
 
 
@@ -16,15 +16,15 @@ func _ready():
     pass
 
 
-func update_components_list(components):
-    var component_list := $CanvasLayer/Panel/VBoxContainer/ComponentContainer/ComponentList
+func update_elements_list(elements):
+    var element_list := $CanvasLayer/Panel/VBoxContainer/ElementContainer/ElementList
 
-    for c in component_list.get_children():
+    for c in element_list.get_children():
         c.queue_free()
 
-    for c in components:
-        var btn := ComponentButton.new(c)
-        component_list.add_child(btn)
+    for c in elements:
+        var btn := ElementButton.new(c)
+        element_list.add_child(btn)
 
 
 func update_focus_list(foci):

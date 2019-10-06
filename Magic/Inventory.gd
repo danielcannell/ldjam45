@@ -6,7 +6,7 @@ var active_foci := [null, null, null]
 var inactive_foci := []
 var all_foci := []
 
-var inactive_components := []
+var inactive_elements := []
 
 
 func pickup_focus(type, subtype):
@@ -19,9 +19,8 @@ func pickup_focus(type, subtype):
     self.all_foci.append(f)
 
 
-func pickup_component(type, subtype):
-    var c := Component.new(type, subtype)
-    inactive_components.append(c)
+func pickup_element(type):
+    inactive_elements.append(Element.new(type))
 
 
 func _on_item_pickup(item_type: int):
@@ -39,13 +38,10 @@ func _on_item_pickup(item_type: int):
             pickup_focus(Globals.FocusType.RING, Globals.Foci.RING)
 
         Globals.WorldItem.FIRE:
-            pickup_component(Globals.ComponentType.ELEMENT, Globals.Elements.FIRE)
+            pickup_element(Globals.Elements.FIRE)
         Globals.WorldItem.WATER:
-            pickup_component(Globals.ComponentType.ELEMENT, Globals.Elements.WATER)
+            pickup_element(Globals.Elements.WATER)
         Globals.WorldItem.ROCK:
-            pickup_component(Globals.ComponentType.ELEMENT, Globals.Elements.ROCK)
+            pickup_element(Globals.Elements.ROCK)
         Globals.WorldItem.WIND:
-            pickup_component(Globals.ComponentType.ELEMENT, Globals.Elements.WIND)
-
-        #Globals.WorldItem.HEALTH,
-        #Globals.WorldItem.SPEED,
+            pickup_element(Globals.Elements.WIND)

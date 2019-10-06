@@ -1,6 +1,5 @@
 extends Node2D
 
-onready var viewport_container = $ViewportContainer
 onready var playfield = $ViewportContainer/Viewport/Playfield
 onready var player = $ViewportContainer/Viewport/Playfield.player
 onready var magic = $Magic
@@ -17,7 +16,5 @@ func _ready():
     magic.connect("inventory_changed", ui, "on_inventory_changed")
     magic.connect("active", playfield, "on_equip_active")
     magic.connect("passive", playfield, "on_equip_passive")
-
-    viewport_container.connect("activate_item_0", playfield, "activate_item")
 
     playfield.connect("item_picked_up", magic, "_on_item_pickup")

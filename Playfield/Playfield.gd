@@ -50,8 +50,8 @@ func _ready():
     assert(currentroom != null)
     roomcenter.jump_to_room(currentroom)
 
-    add_enemy(EnemyTypes.grunt(), 5, 5)
-    add_enemy(EnemyTypes.grunt(), 3, 3)
+    add_enemy(EnemyTypes.evil_wizard(), 5, 5)
+    add_enemy(EnemyTypes.evil_wizard(), 3, 3)
 
     var world_items = [
         Globals.WorldItem.STICK,

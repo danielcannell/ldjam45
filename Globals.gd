@@ -28,20 +28,13 @@ enum FocusType {
 }
 
 enum Foci {
-    STICK,  # Hits things (Element slot)
-    WAND,   # Shoots things (Element slot)
-    STAFF,  # Explodes (Element slot)
-    HAT,    # Enhances constitution (Constitution slot)
-    RING,   # Protects (Element slot)
+    STICK,  # Hits things
+    WAND,   # Shoots things
+    STAFF,  # Explodes
+    HAT,    # Enhances
+    RING,   # Protects
 
     _MAX,
-}
-
-enum ComponentType {
-    ELEMENT,
-    CONSTITUTION,
-
-    _MAX
 }
 
 enum Elements {
@@ -49,13 +42,6 @@ enum Elements {
     WATER,
     WIND,
     ROCK,
-
-    _MAX
-}
-
-enum Constitution {
-    HEALTH,
-    SPEED,
 
     _MAX
 }
@@ -119,17 +105,11 @@ const ENEMY_IMAGES = {
     "evil_wizard": preload("res://Art/evil_wizard.png"),
 }
 
-const COMPONENT_IMAGES = {
-    ComponentType.ELEMENT: {
-        Elements.FIRE: preload("res://Art/components/fire.png"),
-        Elements.WATER: preload("res://Art/components/water.png"),
-        Elements.WIND: preload("res://Art/components/wind.png"),
-        Elements.ROCK: preload("res://Art/components/rock.png"),
-    },
-    #ComponentType.CONSTITUTION: {
-    #    Constitution.HEALTH: preload("res://Art/fireball.png"),
-    #    Constitution.SPEED: preload("res://Art/fireball.png"),
-    #},
+const ELEMENT_IMAGES = {
+    Elements.FIRE: preload("res://Art/elements/fire.png"),
+    Elements.WATER: preload("res://Art/elements/water.png"),
+    Elements.WIND: preload("res://Art/elements/wind.png"),
+    Elements.ROCK: preload("res://Art/elements/rock.png"),
 }
 
 const FOCUS_IMAGES = {
@@ -154,10 +134,10 @@ const WORLD_ITEM_IMAGES = {
     WorldItem.HAT: preload("res://Art/foci/hat.png"),
     WorldItem.RING: preload("res://Art/foci/ring.png"),
 
-    WorldItem.FIRE: preload("res://Art/components/fire.png"),
-    WorldItem.WATER: preload("res://Art/components/water.png"),
-    WorldItem.ROCK: preload("res://Art/components/rock.png"),
-    WorldItem.WIND: preload("res://Art/components/wind.png"),
+    WorldItem.FIRE: preload("res://Art/elements/fire.png"),
+    WorldItem.WATER: preload("res://Art/elements/water.png"),
+    WorldItem.ROCK: preload("res://Art/elements/rock.png"),
+    WorldItem.WIND: preload("res://Art/elements/wind.png"),
 
     # WorldItem.HEALTH,
     # WorldItem.SPEED,
@@ -222,11 +202,6 @@ const ELEMENT_NAMES = {
     Elements.WATER: "Water",
     Elements.ROCK: "Rock",
     Elements.WIND: "Wind",
-}
-
-const CONSTITUTION_NAMES = {
-    Constitution.HEALTH: "Health",
-    Constitution.SPEED: "Speed",
 }
 
 var ai_manager: AIManager = null

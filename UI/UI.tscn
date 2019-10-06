@@ -37,7 +37,7 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
 margin_right = 170.0
 margin_bottom = 14.0
-text = "Magical Components"
+text = "Magical Elements"
 align = 1
 
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/Panel/VBoxContainer"]
@@ -45,13 +45,13 @@ margin_top = 18.0
 margin_right = 170.0
 margin_bottom = 22.0
 
-[node name="ComponentContainer" type="ScrollContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="ElementContainer" type="ScrollContainer" parent="CanvasLayer/Panel/VBoxContainer"]
 margin_top = 26.0
 margin_right = 170.0
 margin_bottom = 293.0
 size_flags_vertical = 3
 
-[node name="ComponentList" type="VBoxContainer" parent="CanvasLayer/Panel/VBoxContainer/ComponentContainer"]
+[node name="ElementList" type="VBoxContainer" parent="CanvasLayer/Panel/VBoxContainer/ElementContainer"]
 margin_right = 170.0
 margin_bottom = 267.0
 size_flags_horizontal = 3

@@ -8,9 +8,8 @@ func get_resistance(foci: Array) -> Dictionary:
 
     for f in foci:
         assert f.action().equals(Actions_.ELEM_PROTECT)
-        if f.component != null:
-            assert f.component.type == Globals.ComponentType.ELEMENT
-            resistances[f.component.subtype] *= f.power
+        if f.element != null:
+            resistances[f.element.type] += f.power
 
     return resistances
 
@@ -19,8 +18,7 @@ func get_buffs(foci: Array) -> Dictionary:
 
     for f in foci:
         assert f.action().equals(Actions_.MULTIPLIER)
-        if f.component != null:
-            assert f.component.type == Globals.ComponentType.CONSTITUTION
-            buffs[f.component.subtype] += f.power
+        if f.element != null:
+            buffs[f.element.type] += f.power
 
     return buffs

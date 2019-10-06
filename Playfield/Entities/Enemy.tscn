@@ -23,6 +23,7 @@ shape = SubResource( 1 )
 margin_left = -8.0
 margin_right = 8.0
 margin_bottom = 4.0
+mouse_filter = 2
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 4 )
 nine_patch_stretch = true

@@ -3,7 +3,7 @@ extends WindowDialog
 
 signal disenchant  # Focus
 signal equip  # Focus
-signal enchant  # Focus, Component
+signal enchant  # Focus, Element
 
 
 onready var focus_name := $VBoxContainer/FocusName
@@ -36,7 +36,7 @@ func update_view():
     focus_flavour_text.text = focus.flavour_text()
     focus_image.texture = focus.image()
     equip_button.disabled = focus.active
-    disenchant_button.disabled = focus.component == null
+    disenchant_button.disabled = focus.element == null
 
 
 func on_equip():
@@ -47,6 +47,6 @@ func on_disenchant():
     emit_signal("disenchant", focus)
 
 
-func on_enchant(component):
-    if focus.component == null:
-        emit_signal("enchant", focus, component)
+func on_enchant(element):
+    if focus.element == null:
+        emit_signal("enchant", focus, element)

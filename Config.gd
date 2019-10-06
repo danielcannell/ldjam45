@@ -19,8 +19,10 @@ var player_resistances := {
 }
 
 var player_buffs := {
-    Globals.Constitution.HEALTH: 1.0,
-    Globals.Constitution.SPEED: 1.0,
+    Globals.Elements.FIRE: 1.0,
+    Globals.Elements.WATER: 1.0,
+    Globals.Elements.WIND: 1.0,
+    Globals.Elements.ROCK: 1.0
 }
 
 # If active is false, then the tutorial will not run.
