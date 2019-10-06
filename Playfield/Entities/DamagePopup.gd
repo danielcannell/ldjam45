@@ -50,8 +50,9 @@ func _draw():
         color = Color(0, 0, 1, alpha)
 
     var text: String = str(int(damage))
-    var str_size := Globals.damage_popup_font.get_string_size(text)
-    var ascent := Globals.damage_popup_font.get_ascent()
-    var str_width = str_size.x / 2
-    draw_circle(render_pos, str_width + 2, color)
+    var str_size: Vector2 = Globals.damage_popup_font.get_string_size(text)
+    var ascent: float = Globals.damage_popup_font.get_ascent()
+    var str_width := str_size.x / 2
+    var str_height := str_size.y / 2
+    draw_circle(render_pos, max(str_width, str_height) + 2, color)
     draw_string(Globals.damage_popup_font, render_pos + Vector2(-str_width, ascent - str_size.y/2), text, Color(1, 1, 1, alpha))
