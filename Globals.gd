@@ -83,6 +83,13 @@ enum Action {
     _MAX
 }
 
+enum Team {
+    PLAYER,
+    ENEMY,
+
+    _MAX
+}
+
 enum Tiles {
     Wall1 = 0,
     Door1 = 16,

@@ -12,6 +12,9 @@ var current_goal = null
 
 onready var health_bar = $HealthBar
 
+func get_team():
+    return Globals.Team.ENEMY
+
 
 func damage(dmg):
     health = max(0, health - dmg)
