@@ -12,6 +12,9 @@ const DAMAGE_REDUCTION_FACTOR = 1
 const SPEED_BOOST_FACTOR = 1
 const BURN_RATE = 5
 
+const DAMAGE_POPUP_TIME = 0.5
+const DAMAGE_POPUP_FADE_TIME = 0.25
+
 var player_resistances := {
     Globals.Elements.FIRE: 1.0,
     Globals.Elements.WATER: 1.0,
@@ -30,5 +33,6 @@ var player_buffs := {
 # If active is true, then the tutorial will run. Simples!
 var tutorial_active = true
 var tutorial_on_restart = true
+
 # Tutorial events we've already seen
 var tutorial_occurred = []

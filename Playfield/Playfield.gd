@@ -20,6 +20,7 @@ var item_cooldown = 0
 
 onready var tilemap = find_node("TileMap")
 onready var roomcenter = find_node("RoomCenter")
+onready var damage_popups = $DamagePopups
 
 
 const DEBUG_ROOM_BOUNDS = false
@@ -29,6 +30,12 @@ func _init():
     player = Player.instance()
     player.connect("damaged", self, "on_entity_damaged")
     add_child(player)
+
+    var font_data = DynamicFontData.new()
+    font_data.font_path = "res://Art/DejaVuSansMono.ttf"
+    Globals.damage_popup_font = DynamicFont.new()
+    Globals.damage_popup_font.font_data = font_data
+    Globals.damage_popup_font.size = 36
 
 
 func add_enemy(enemy: Enemy, x: float, y: float) -> void:
@@ -92,7 +99,7 @@ func on_equip_passive(resistances, buffs):
 
 
 func on_entity_damaged(entity: Node2D, damage: float) -> void:
-    prints(entity, damage)
+    damage_popups.add_child(DamagePopup.new(entity, damage))
 
 
 func swing():
