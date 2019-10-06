@@ -7,6 +7,7 @@ var health = 100
 
 onready var health_bar = $HealthBar
 onready var hat = $Hat
+onready var sprite = $Sprite
 
 
 func get_team():
@@ -17,10 +18,11 @@ func damage(dmg):
     health = max(0, health - dmg)
 
 
-func set_hat(enabled):
-    hat.visible = enabled
+func on_equip(focus):
+    var hat_equipped= (focus.type == Globals.FocusType.HAT)
+    hat.visible = hat_equipped
 
-    if enabled:
+    if hat_equipped:
         health_bar.rect_position.y = -23
     else:
         health_bar.rect_position.y = -11
@@ -47,6 +49,16 @@ func _ready():
 
 func _physics_process(delta):
     var velocity = get_input()
+
+    if velocity.x > 0:
+        hat.flip_h = false
+        hat.offset.x = -1
+        sprite.flip_h = false
+    elif velocity.x < 0:
+        hat.flip_h = true
+        hat.offset.x = 1
+        sprite.flip_h = true
+
     move_and_slide(velocity)
 
 

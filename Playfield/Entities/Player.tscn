@@ -37,4 +37,4 @@ texture_progress = ExtResource( 4 )
 visible = false
 z_index = -1
 texture = ExtResource( 5 )
-offset = Vector2( 0, -10 )
+offset = Vector2( -1, -10 )
