@@ -11,6 +11,7 @@ const INVALID_CELL: int = -999
 var rooms = []
 var bounds: Rect2
 var cells: Array = []
+var cellsoffset: Vector2 = Vector2(0, 0)
 
 func _init():
     if false:
@@ -108,6 +109,10 @@ func find_first_room_cell(roomnum: int) -> Vector2:
     return INVALID_VEC
 
 
+func add_point_to_room(room: Room, x: int, y: int) -> void:
+    room.add_point(Vector2(x + int(cellsoffset.x), y + int(cellsoffset.y)))
+
+
 # Compute the bounding polygon for a connected room starting at pos.
 func compute_bounding_polygon(start: Vector2) -> Room:
     var dir = Globals.Dir.RIGHT
@@ -123,11 +128,11 @@ func compute_bounding_polygon(start: Vector2) -> Room:
             if get_cell(cx, cy-1) == num:
                 # Now go UP
                 dir = Globals.Dir.UP
-                room.add_point(Vector2(cx, cy))
+                add_point_to_room(room, cx, cy)
             elif get_cell(cx, cy) != num:
                 # Now go DOWN
                 dir = Globals.Dir.DOWN
-                room.add_point(Vector2(cx, cy))
+                add_point_to_room(room, cx, cy)
             elif get_cell(cx, cy) == num:
                 # Keep going RIGHT
                 cx += 1
@@ -138,11 +143,11 @@ func compute_bounding_polygon(start: Vector2) -> Room:
             if get_cell(cx, cy) == num:
                 # Now go RIGHT
                 dir = Globals.Dir.RIGHT
-                room.add_point(Vector2(cx, cy))
+                add_point_to_room(room, cx, cy)
             elif get_cell(cx-1, cy) != num:
                 # Now go LEFT
                 dir = Globals.Dir.LEFT
-                room.add_point(Vector2(cx, cy))
+                add_point_to_room(room, cx, cy)
             elif get_cell(cx-1, cy) == num:
                 # Keep going DOWN
                 cy += 1
@@ -153,11 +158,11 @@ func compute_bounding_polygon(start: Vector2) -> Room:
             if get_cell(cx-1, cy-1) == num:
                 # Now go LEFT
                 dir = Globals.Dir.LEFT
-                room.add_point(Vector2(cx, cy))
+                add_point_to_room(room, cx, cy)
             elif get_cell(cx, cy-1) != num:
                 # Now go RIGHT
                 dir = Globals.Dir.RIGHT
-                room.add_point(Vector2(cx, cy))
+                add_point_to_room(room, cx, cy)
                 if cx == int(start.x) and cy == int(start.y):
                     # Special case if we've ended up back at the start!
                     break
@@ -171,11 +176,11 @@ func compute_bounding_polygon(start: Vector2) -> Room:
             if get_cell(cx-1, cy) == num:
                 # Now go DOWN
                 dir = Globals.Dir.DOWN
-                room.add_point(Vector2(cx, cy))
+                add_point_to_room(room, cx, cy)
             elif get_cell(cx-1, cy-1) != num:
                 # Now go UP
                 dir = Globals.Dir.UP
-                room.add_point(Vector2(cx, cy))
+                add_point_to_room(room, cx, cy)
             elif get_cell(cx-1, cy-1) == num:
                 # Keep going LEFT
                 cx -= 1
@@ -191,10 +196,11 @@ func compute_bounds(tilemap: TileMap) -> int:
     # Initialise the grid
     bounds = tilemap.get_used_rect()
     cells = []
+    cellsoffset = bounds.position
     for y in range(bounds.size.y):
         cells.append([])
         for x in range(bounds.size.x):
-            var tile = tilemap.get_cell(int(bounds.position.x) + x, int(bounds.position.y) + y)
+            var tile = tilemap.get_cell(int(cellsoffset.x) + x, int(cellsoffset.y) + y)
             if tile_is_boundary(tile):
                 cells[y].append(WALL)
             else:
