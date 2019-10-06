@@ -18,6 +18,23 @@ func _init(type: int, subtype: int, action: Action, component: Component, power:
 func image():
     pass
 
+
+func name():
+    # Generic names
+    if component == null:
+        return Globals.FOCUS_NAMES[subtype]
+
+    if Globals.ENCHANTED_FOCUS_NAMES.has(subtype):
+        if Globals.ENCHANTED_FOCUS_NAMES[subtype].has(component.subtype):
+            return Globals.ENCHANTED_FOCUS_NAMES[subtype][component.subtype]
+
+    return Globals.ENCHANTED_FOCUS_NAME_TEMPLATES[subtype] % component.name()
+
+
+func flavour_text():
+    return "Test flavour text"
+
+
 func equals(other: Focus):
     return (
         self.type == other.type

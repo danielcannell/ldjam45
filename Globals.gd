@@ -12,7 +12,7 @@ enum FocusType {
     HAT,
     RING,
     WEAPON,
-    
+
     _MAX
 }
 
@@ -79,7 +79,7 @@ enum Action {
     PROJECT,
     EXPLODE,
     PROJECT_EXPLODE,
-    
+
     _MAX
 }
 
@@ -107,4 +107,41 @@ const COMPONENT_IMAGES = {
         Constitution.HEALTH: preload("res://Art/fireball.png"),
         Constitution.SPEED: preload("res://Art/fireball.png"),
     },
+}
+
+const FOCUS_NAMES = {
+    Foci.STICK: "Stick",
+    Foci.WAND: "Wand",
+    Foci.STAFF: "Staff of Explosion",
+    Foci.HAT: "Hat of Enhancement",
+    Foci.RING: "Ring of Protection",
+}
+
+const ENCHANTED_FOCUS_NAME_TEMPLATES = {
+    Foci.STICK: "Stick of %s",
+    Foci.WAND: "Wand of %s",
+    Foci.STAFF: "Staff of Exploding %s",
+    Foci.HAT: "Hat of %s Enhancement",
+    Foci.RING: "Ring of %s Protection",
+}
+
+const ENCHANTED_FOCUS_NAMES = {
+    Foci.STICK: {
+        Elements.FIRE: "Torch",
+        Elements.WATER: "Wet Stick",
+        Elements.ROCK: "Club",
+        Elements.WIND: "Flute",
+    },
+}
+
+const ELEMENT_NAMES = {
+    Elements.FIRE: "Fire",
+    Elements.WATER: "Water",
+    Elements.ROCK: "Rock",
+    Elements.WIND: "Wind",
+}
+
+const CONSTITUTION_NAMES = {
+    Constitution.HEALTH: "Health",
+    Constitution.SPEED: "Speed",
 }

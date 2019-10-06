@@ -13,6 +13,14 @@ var components := [
 ]
 
 
+var foci := [
+    Focus.new(Globals.FocusType.HAT, Globals.Foci.HAT, Globals.Action.MULTIPLIER, null, 0.0),
+    Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STICK, Globals.Action.MULTIPLIER, null, 0.0),
+    Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STICK, Globals.Action.MULTIPLIER, components[0], 0.0),
+    Focus.new(Globals.FocusType.WEAPON, Globals.Foci.WAND, Globals.Action.MULTIPLIER, components[1], 0.0),
+]
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     update_components_list()
@@ -30,6 +38,7 @@ func update_components_list():
 func update_focus_list():
     var focus_list := $CanvasLayer/Panel/VBoxContainer/FociContainer/FociList
 
-    var btn := FocusButton.new()
-    btn.connect("button_down", $CanvasLayer/FocusEditor, "show")
-    focus_list.add_child(btn)
+    for f in foci:
+        var btn := FocusButton.new()
+        btn.connect("button_down", $CanvasLayer/FocusEditor, "show_focus", [f])
+        focus_list.add_child(btn)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://UI/UI.gd" type="Script" id=1]
+[ext_resource path="res://UI/FocusEditor.gd" type="Script" id=2]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -68,7 +69,63 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="FocusEditor" type="WindowDialog" parent="CanvasLayer"]
+visible = true
 margin_left = 129.894
 margin_top = 100.093
 margin_right = 734.894
 margin_bottom = 485.093
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/FocusEditor"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FocusName" type="Label" parent="CanvasLayer/FocusEditor/VBoxContainer"]
+margin_right = 605.0
+margin_bottom = 14.0
+text = "Focus Name"
+align = 1
+
+[node name="FocusFlavourText" type="Label" parent="CanvasLayer/FocusEditor/VBoxContainer"]
+margin_top = 18.0
+margin_right = 605.0
+margin_bottom = 32.0
+text = "Focus Flavour Text"
+align = 1
+
+[node name="ImageContainer" type="HBoxContainer" parent="CanvasLayer/FocusEditor/VBoxContainer"]
+margin_top = 36.0
+margin_right = 605.0
+margin_bottom = 361.0
+size_flags_vertical = 3
+
+[node name="FocusImage" type="TextureRect" parent="CanvasLayer/FocusEditor/VBoxContainer/ImageContainer"]
+margin_right = 300.0
+margin_bottom = 325.0
+size_flags_horizontal = 3
+
+[node name="ComponentImage" type="TextureRect" parent="CanvasLayer/FocusEditor/VBoxContainer/ImageContainer"]
+margin_left = 304.0
+margin_right = 605.0
+margin_bottom = 325.0
+size_flags_horizontal = 3
+
+[node name="ButtonContainer" type="HBoxContainer" parent="CanvasLayer/FocusEditor/VBoxContainer"]
+margin_top = 365.0
+margin_right = 605.0
+margin_bottom = 385.0
+
+[node name="EquipButton" type="Button" parent="CanvasLayer/FocusEditor/VBoxContainer/ButtonContainer"]
+margin_right = 300.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Equip"
+
+[node name="DisenchantButton" type="Button" parent="CanvasLayer/FocusEditor/VBoxContainer/ButtonContainer"]
+margin_left = 304.0
+margin_right = 605.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Disenchant"

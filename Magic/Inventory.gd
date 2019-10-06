@@ -1,7 +1,7 @@
 extends Node
 class_name Inventory
 
-# Hack to have public static 
+# Hack to have public static
 var ActionsByName = preload("ActionsByName.gd").new()
 var StatusEffects = preload("StatusEffects.gd").new()
 
