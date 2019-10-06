@@ -6,6 +6,7 @@ var health = 100
 
 
 onready var health_bar = $HealthBar
+onready var hat = $Hat
 
 
 func get_team():
@@ -14,6 +15,15 @@ func get_team():
 
 func damage(dmg):
     health = max(0, health - dmg)
+
+
+func set_hat(enabled):
+    hat.visible = enabled
+
+    if enabled:
+        health_bar.rect_position.y = -23
+    else:
+        health_bar.rect_position.y = -11
 
 
 func get_input():
