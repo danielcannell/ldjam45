@@ -121,10 +121,10 @@ const COMPONENT_IMAGES = {
         Elements.WIND: preload("res://Art/components/wind.png"),
         Elements.ROCK: preload("res://Art/components/rock.png"),
     },
-    ComponentType.CONSTITUTION: {
-        Constitution.HEALTH: preload("res://Art/fireball.png"),
-        Constitution.SPEED: preload("res://Art/fireball.png"),
-    },
+    #ComponentType.CONSTITUTION: {
+    #    Constitution.HEALTH: preload("res://Art/fireball.png"),
+    #    Constitution.SPEED: preload("res://Art/fireball.png"),
+    #},
 }
 
 const FOCUS_IMAGES = {
@@ -156,6 +156,13 @@ const WORLD_ITEM_IMAGES = {
 
     # WorldItem.HEALTH,
     # WorldItem.SPEED,
+}
+
+const PROJECTILE_IMAGES = {
+    Elements.FIRE: preload("res://Art/projectiles/fireball.png"),
+    Elements.WATER: preload("res://Art/projectiles/waterball.png"),
+    Elements.ROCK: preload("res://Art/projectiles/rockball.png"),
+    Elements.WIND: preload("res://Art/projectiles/windball.png"),
 }
 
 # Names of unenchanted foci

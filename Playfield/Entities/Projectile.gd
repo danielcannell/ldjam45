@@ -1,11 +1,6 @@
 extends Area2D
 
 
-const TEXTURES = {
-    Globals.Elements.FIRE: preload("res://Art/fireball.png"),
-}
-
-
 var type
 var velocity = Vector2(200, 0)
 var ttl = 10000
@@ -21,7 +16,7 @@ func init(t, pos, target, range_):
     ttl = range_
 
     var sprite := $ProjectileSprite
-    sprite.set_texture(TEXTURES[type])
+    sprite.set_texture(Globals.PROJECTILE_IMAGES[type])
     sprite.set_rotation(velocity.angle())
 
 
