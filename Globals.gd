@@ -163,7 +163,7 @@ const FOCUS_NAMES = {
     Foci.STICK: "Stick",
     Foci.WAND: "Short pointy stick",
     Foci.STAFF: "Long rugged stick",
-    Foci.HAT: "Floopy hat",
+    Foci.HAT: "Floppy hat",
     Foci.RING: "Gaudy ring",
 }
 

@@ -48,4 +48,5 @@ func on_disenchant():
 
 
 func on_enchant(component):
-    emit_signal("enchant", focus, component)
+    if focus.component == null:
+        emit_signal("enchant", focus, component)
