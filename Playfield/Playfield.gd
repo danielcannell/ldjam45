@@ -5,6 +5,7 @@ const Player = preload("res://Playfield/Entities/Player.tscn")
 const Enemy = preload("res://Playfield/Entities/Enemy.tscn")
 const Item = preload("res://Playfield/Entities/Item.tscn")
 const Projectile = preload("res://Playfield/Entities/Projectile.tscn")
+const Swing = preload("res://Playfield/Entities/Swing.tscn")
 
 
 signal item_picked_up
@@ -82,7 +83,9 @@ func on_equip_passive(resistances, buffs):
 
 
 func swing():
-    pass
+    var s = Swing.instance()
+    s.init(equipped_focus, get_global_mouse_position() - player.position)
+    player.add_child(s)
 
 
 func shoot(type):
