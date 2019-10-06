@@ -8,7 +8,7 @@ var ai: Array = []
 const Projectile = preload("res://Playfield/Entities/Projectile.tscn")
 
 const movement_speed: float = 32.0
-const attack_cooldown: float = 2.0
+const attack_cooldown: float = 1.0
 const DEBUG_AI_GOAL = true
 
 var current_goal = null

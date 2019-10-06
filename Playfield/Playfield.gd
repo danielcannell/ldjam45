@@ -46,7 +46,8 @@ func _ready():
 
     var enemy = Enemy.instance()
     enemy.position = tilemap.map_to_world(Vector2(3, 3))
-    enemy.add_ai(AICharge.new(ai_manager, enemy, 32, 64, 16))
+    #enemy.add_ai(AICharge.new(ai_manager, enemy, 32, 64, 16))
+    enemy.add_ai(AISpellcaster.new(ai_manager, enemy, 64, 128, 64, 32))
     enemy.add_ai(AIWander.new(ai_manager, enemy, 1, 5, 8))
     add_child(enemy)
 
@@ -90,8 +91,8 @@ func activate_item():
     if item_cooldown < 1e-6:
         item_cooldown = 0.25
 
-        # shoot()
-        explode()
+        shoot()
+        # explode()
 
 
 func _process(delta):
