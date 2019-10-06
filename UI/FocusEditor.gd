@@ -8,8 +8,7 @@ signal enchant  # Focus, Component
 
 onready var focus_name := $VBoxContainer/FocusName
 onready var focus_flavour_text := $VBoxContainer/FocusFlavourText
-onready var focus_image := $VBoxContainer/ImageContainer/FocusImage
-onready var component_image := $VBoxContainer/ImageContainer/ComponentImage
+onready var focus_image := $VBoxContainer/FocusImage
 onready var equip_button := $VBoxContainer/ButtonContainer/EquipButton
 onready var disenchant_button := $VBoxContainer/ButtonContainer/DisenchantButton
 
@@ -20,7 +19,7 @@ var focus: Focus
 func _ready():
     equip_button.connect("button_down", self, "on_equip")
     disenchant_button.connect("button_down", self, "on_disenchant")
-    component_image.connect("enchant", self, "on_enchant")
+    focus_image.connect("enchant", self, "on_enchant")
 
 
 func show_focus(f):
