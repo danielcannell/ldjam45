@@ -13,6 +13,8 @@ func pickup_focus(type, subtype):
     var power = 1.0
     if type == Globals.FocusType.RING:
         power = 0.0
+    elif type == Globals.FocusType.HAT:
+        power = 2.0
 
     var f := Focus.new(type, subtype, null, power)
     self.inactive_foci.append(f)
