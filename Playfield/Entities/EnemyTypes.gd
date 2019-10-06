@@ -47,7 +47,7 @@ static func fire_elemental() -> Enemy:
     var keep_away_distance: float = 0.0
 
     enemy.add_ai(AISpellcaster.new(Globals.ai_manager, enemy, aggro_distance, lose_sight_distance, attack_range, keep_away_distance))
-    enemy.add_ai(AIWander.new(Globals.ai_manager, enemy, 1, 5, 8))
+    enemy.add_ai(AIGoHome.new(Globals.ai_manager, enemy))
 
     enemy.set_passives([Globals.Elements.FIRE], [Globals.Elements.WATER], [])
 
@@ -68,7 +68,7 @@ static func water_elemental() -> Enemy:
     var keep_away_distance: float = 0.0
 
     enemy.add_ai(AISpellcaster.new(Globals.ai_manager, enemy, aggro_distance, lose_sight_distance, attack_range, keep_away_distance))
-    enemy.add_ai(AIWander.new(Globals.ai_manager, enemy, 1, 5, 8))
+    enemy.add_ai(AIGoHome.new(Globals.ai_manager, enemy))
 
     enemy.set_passives([Globals.Elements.WATER], [Globals.Elements.WIND], [])
 
