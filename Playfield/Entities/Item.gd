@@ -2,8 +2,8 @@ extends Area2D
 
 
 const TEXTURES = {
-    Globals.WorldItem.HAT: preload("res://Art/hat.png"),
-    Globals.WorldItem.TORCH: preload("res://Art/torch.png"),
+    Globals.WorldItem.HAT: preload("res://Art/foci/hat.png"),
+    Globals.WorldItem.TORCH: preload("res://Art/foci/torch.png"),
 }
 
 

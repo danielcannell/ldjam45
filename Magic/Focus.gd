@@ -16,7 +16,29 @@ func _init(type: int, subtype: int, component: Component, power: float):
 
 
 func image():
-    pass
+    if component != null:
+        if Globals.ENCHANTED_FOCUS_IMAGES.has(subtype):
+            if Globals.ENCHANTED_FOCUS_IMAGES[subtype].has(component.subtype):
+                return Globals.ENCHANTED_FOCUS_IMAGES[subtype][component.subtype]
+
+    return Globals.FOCUS_IMAGES[self.subtype]
+
+
+func name():
+    # Generic names
+    if component == null:
+        return Globals.FOCUS_NAMES[subtype]
+
+    if Globals.ENCHANTED_FOCUS_NAMES.has(subtype):
+        if Globals.ENCHANTED_FOCUS_NAMES[subtype].has(component.subtype):
+            return Globals.ENCHANTED_FOCUS_NAMES[subtype][component.subtype]
+
+    return Globals.ENCHANTED_FOCUS_NAME_TEMPLATES[subtype] % component.name()
+
+
+func flavour_text():
+    return "Test flavour text"
+
 
 func action() -> Actions.FocusAction:
     return Actions_.by_focus[self.subtype]

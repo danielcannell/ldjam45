@@ -34,7 +34,7 @@ func handle_demo_action_event():
 # Tutorial Code
 # ----------------------------------------------------------------------------
 func _ready():
-    popup.get_close_button().connect("pressed", self, "handle_popup_ok_pressed")
+    popup.get_close_button().visible = false
     call_deferred("handle_tutorial_event", Globals.TutorialEvents.DEMO_ACTION_EVENT)
 
 

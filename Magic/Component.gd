@@ -13,3 +13,12 @@ func equals(other: Component):
 
 func image():
     return Globals.COMPONENT_IMAGES[type][subtype]
+
+func name():
+    match type:
+        Globals.ComponentType.ELEMENT:
+            return Globals.ELEMENT_NAMES[subtype]
+        Globals.ComponentType.CONSTITUTION:
+            return Globals.CONSTITUTION_NAMES[subtype]
+        _:
+            return "What?"
