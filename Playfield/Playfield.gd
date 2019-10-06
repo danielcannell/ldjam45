@@ -18,7 +18,6 @@ var currentroom: Room = null
 var equipped_focus = null
 
 var item_cooldown = 0
-var need_to_activate = false
 
 onready var tilemap = find_node("TileMap")
 onready var roomcenter = find_node("RoomCenter")
@@ -107,7 +106,6 @@ func explode(type):
 
 
 func activate_item():
-    print("In activate item")
     if item_cooldown < 1e-6 and equipped_focus:
         item_cooldown = 0.25
 
@@ -126,16 +124,9 @@ func activate_item():
 
 func _unhandled_input(event):
     if event.is_action_pressed("activate_item_0"):
-        need_to_activate = true
-
-func input(event):
-    print("Got input")
+        activate_item()
 
 func _process(delta):
-    if need_to_activate:
-        activate_item()
-        need_to_activate = false
-
     item_cooldown = max(0, item_cooldown - delta)
 
     var playerroom: Room = rooms.get_containing_room(tilemap.world_to_map(player.position))
