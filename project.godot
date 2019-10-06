@@ -10,9 +10,14 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
-"class": "Action",
+"class": "Actions",
 "language": "GDScript",
-"path": "res://Magic/Action.gd"
+"path": "res://Magic/Actions.gd"
+}, {
+"base": "Reference",
+"class": "Comparators",
+"language": "GDScript",
+"path": "res://Magic/Comparators.gd"
 }, {
 "base": "Reference",
 "class": "Component",
@@ -45,7 +50,8 @@ _global_script_classes=[ {
 "path": "res://Magic/StatusEffects.gd"
 } ]
 _global_script_class_icons={
-"Action": "",
+"Actions": "",
+"Comparators": "",
 "Component": "",
 "Focus": "",
 "Inventory": "",

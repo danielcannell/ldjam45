@@ -1,19 +1,26 @@
 extends Node
 class_name StatusEffects
 
-var resistances := {
-    "fire": 1.0,
-    "water": 1.0,
-    "wind": 1.0,
-    "rock": 1.0,
-    "physical": 1.0
-}
+var Actions_ = Actions.new()
 
-var buffs := {
-    "dmg_resist": 1.0,
-    "speed": 1.0,
-}
+func get_resistance(foci: Array) -> Dictionary:
+    var resistances: Dictionary = Config.default_resistances.duplicate()
+    
+    for f in foci:
+        assert f.action().action.equals(Actions_.ELEM_PROTECT)
+        if f.component != null:
+            assert f.component.type == Globals.ComponentType.ELEMENT
+            resistances[f.component.subtype] += f.power
+    
+    return resistances
 
-func compute_overall_effects(active_items):
-    for item in active_items:
-        pass
+func get_buffs(foci: Array) -> Dictionary:
+    var buffs: Dictionary = Config.default_buffs.duplicate()
+    
+    for f in foci:
+        assert f.action().action.equals(Actions_.MULTIPLIER)
+        if f.component != null:
+            assert f.component.type == Globals.ComponentType.CONSTITUTION
+            buffs[f.component.subtype] += f.power
+    
+    return buffs
