@@ -84,8 +84,10 @@ func on_equip_passive(resistances, buffs):
 
 func swing():
     var s = Swing.instance()
-    s.init(equipped_focus, get_global_mouse_position() - player.position)
+    var dir: Vector2 = get_global_mouse_position() - player.position
+    s.init(equipped_focus, dir)
     player.add_child(s)
+    s.position = Vector2(sign(dir.x) * 4, 4)
 
 
 func shoot(type):
