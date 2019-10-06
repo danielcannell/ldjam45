@@ -14,7 +14,7 @@ static func grunt() -> Enemy:
     enemy.movement_speed = 120.0
     enemy.image = Globals.ENEMY_IMAGES["grunt"]
     enemy.sprite_width = 14.0
-    enemy.sprite_height = 16.0
+    enemy.sprite_height = 20.0
     var rock: Element = Element.new(Globals.Elements.ROCK)
     enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STICK, rock, 1.0)
     return enemy
@@ -33,7 +33,45 @@ static func evil_wizard() -> Enemy:
     enemy.movement_speed = 100.0
     enemy.image = Globals.ENEMY_IMAGES["evil_wizard"]
     enemy.sprite_width = 14.0
-    enemy.sprite_height = 16.0
+    enemy.sprite_height = 22.0
     var type: Element = Element.new(Globals.Elements.FIRE)
-    enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STICK, type, 1.0)
+    enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.WAND, type, 1.0)
+    return enemy
+
+
+static func fire_elemental() -> Enemy:
+    var enemy = EnemyScene.instance()
+    var aggro_distance: float = 64.0
+    var lose_sight_distance: float = 128.0
+    var attack_range: float = 40.0
+    var keep_away_distance: float = 0.0
+
+    enemy.add_ai(AISpellcaster.new(Globals.ai_manager, enemy, aggro_distance, lose_sight_distance, attack_range, keep_away_distance))
+    enemy.add_ai(AIWander.new(Globals.ai_manager, enemy, 1, 5, 8))
+
+    enemy.movement_speed = 10.0
+    enemy.image = Globals.ENEMY_IMAGES["fire_elemental"]
+    enemy.sprite_width = 17.0
+    enemy.sprite_height = 40.0
+    var type: Element = Element.new(Globals.Elements.FIRE)
+    enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STAFF, type, 1.0)
+    return enemy
+
+
+static func water_elemental() -> Enemy:
+    var enemy = EnemyScene.instance()
+    var aggro_distance: float = 64.0
+    var lose_sight_distance: float = 128.0
+    var attack_range: float = 40.0
+    var keep_away_distance: float = 0.0
+
+    enemy.add_ai(AISpellcaster.new(Globals.ai_manager, enemy, aggro_distance, lose_sight_distance, attack_range, keep_away_distance))
+    enemy.add_ai(AIWander.new(Globals.ai_manager, enemy, 1, 5, 8))
+
+    enemy.movement_speed = 10.0
+    enemy.image = Globals.ENEMY_IMAGES["water_elemental"]
+    enemy.sprite_width = 17.0
+    enemy.sprite_height = 40.0
+    var type: Element = Element.new(Globals.Elements.WATER)
+    enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STAFF, type, 1.0)
     return enemy

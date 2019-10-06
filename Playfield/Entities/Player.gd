@@ -2,7 +2,10 @@ extends KinematicBody2D
 
 signal player_death
 
-var health = Health.new()
+signal damaged
+
+
+var health := Health.new()
 
 onready var health_bar = $HealthBar
 onready var hat = $Hat
@@ -14,7 +17,8 @@ func get_team():
 
 
 func damage(dmg, type):
-    health.damage(dmg, type)
+    var dealt := health.damage(dmg, type)
+    emit_signal("damaged", self, dealt)
 
 
 func set_passives(rs, bs):
