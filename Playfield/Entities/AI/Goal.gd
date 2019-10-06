@@ -4,7 +4,8 @@ class_name GoalHelpers
 enum Type {
     IDLE,
     GO_TO,
-    ATTACK,
+    ATTACK_CLOSE,
+    ATTACK_SHOOT,
 }
 
 
@@ -25,9 +26,12 @@ class AIGoal:
             return ""
 
 
-static func attack(player: Node2D) -> AIGoal:
+static func attack(player: Node2D, ranged: bool) -> AIGoal:
     var goal := AIGoal.new()
-    goal.type = Type.ATTACK
+    if ranged:
+        goal.type = Type.ATTACK_SHOOT
+    else:
+        goal.type = Type.ATTACK_CLOSE
     goal.target = player
     return goal
 

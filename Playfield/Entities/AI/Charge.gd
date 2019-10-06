@@ -25,7 +25,7 @@ func think():
     if tracking_player:
         var dist := get_pos().distance_to(player_pos())
         if dist < attack_range:
-            return GoalHelpers.attack(tracking_player)
+            return GoalHelpers.attack(tracking_player, false)
         elif dist > lose_sight_range:
             tracking_player = null
             return GoalHelpers.idle()

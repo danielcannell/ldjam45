@@ -129,12 +129,11 @@ func activate_item():
         else:
             assert(false)
 
-
-func _process(delta):
-    # For now we just have one active item slot
-    if Input.is_action_just_pressed("activate_item_0"):
+func _unhandled_input(event):
+    if event.is_action_pressed("activate_item_0"):
         activate_item()
 
+func _process(delta):
     item_cooldown = max(0, item_cooldown - delta)
 
     var playerroom: Room = rooms.get_containing_room(tilemap.world_to_map(player.position))

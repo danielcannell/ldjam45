@@ -6,6 +6,7 @@ var health = Health.new()
 var ai: Array = []
 
 const Projectile = preload("res://Playfield/Entities/Projectile.tscn")
+const Swing = preload("res://Playfield/Entities/Swing.tscn")
 
 const movement_speed: float = 32.0
 const attack_cooldown: float = 1.0
@@ -17,10 +18,12 @@ var time: float = 0
 var image: Texture = null
 var sprite_width: float = 0
 var sprite_height: float = 0
+var weapon: Focus = null
 
 onready var health_bar = $HealthBar
 onready var sprite = $Sprite
 onready var collision = $CollisionShape2D
+onready var playfield = $".."
 
 
 func _ready():
@@ -52,10 +55,11 @@ func _draw():
     health_bar.set_value(health.value)
 
     if DEBUG_AI_GOAL and current_goal:
-        if current_goal.type == GoalHelpers.Type.GO_TO:
-            draw_line(Vector2(0,0), current_goal.position - position, Color.green, 2)
-        elif current_goal.type == GoalHelpers.Type.ATTACK:
-            draw_line(Vector2(0,0), current_goal.target.position - position, Color.red, 2)
+        match current_goal.type:
+            GoalHelpers.Type.GO_TO:
+                draw_line(Vector2(0,0), current_goal.position - position, Color.green, 2)
+            GoalHelpers.Type.ATTACK_CLOSE, GoalHelpers.Type.ATTACK_SHOOT:
+                draw_line(Vector2(0,0), current_goal.target.position - position, Color.red, 2)
 
 
 func get_new_ai_goal() -> void:
@@ -71,7 +75,7 @@ func get_new_ai_goal() -> void:
         if goal.type == GoalHelpers.Type.IDLE:
             continue
 
-        elif goal.type == GoalHelpers.Type.ATTACK:
+        elif goal.type == GoalHelpers.Type.ATTACK_CLOSE or goal.type == GoalHelpers.Type.ATTACK_SHOOT:
             current_goal = goal
             break
 
@@ -98,10 +102,22 @@ func attack(target: Node2D) -> void:
         return
 
     next_attack_time = time + attack_cooldown
-    var p = Projectile.instance()
-    p.init(Globals.Elements.FIRE, Vector2(0,0), target.position - position, 1e6)
-    p.team = Globals.Team.ENEMY
-    add_child(p)
+
+    if current_goal.type == GoalHelpers.Type.ATTACK_CLOSE:
+        if weapon:
+            var s = Swing.instance()
+            var dir: Vector2 = target.position - position
+            s.init(weapon, dir)
+            s.team = Globals.Team.ENEMY
+            add_child(s)
+            s.position = Vector2(sign(dir.x) * 4, 4)
+    elif current_goal.type == GoalHelpers.Type.ATTACK_SHOOT:
+        var p = Projectile.instance()
+        p.init(Globals.Elements.FIRE, Vector2(0,0), target.position - position, 1e6)
+        p.team = Globals.Team.ENEMY
+        playfield.add_child(p)
+    else:
+        assert(false)
 
 
 func _physics_process(delta):
@@ -109,7 +125,7 @@ func _physics_process(delta):
     get_new_ai_goal()
 
     if current_goal:
-        if current_goal.type == GoalHelpers.Type.ATTACK:
+        if current_goal.type == GoalHelpers.Type.ATTACK_SHOOT or current_goal.type == GoalHelpers.Type.ATTACK_CLOSE:
             # Attack enemy
             attack(current_goal.target)
 
