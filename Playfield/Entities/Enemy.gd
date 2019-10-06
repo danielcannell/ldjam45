@@ -138,6 +138,4 @@ func _physics_process(delta):
             # Move toward the target
             var diff: Vector2 = current_goal.position - position
             var dir := diff.normalized() * movement_speed
-            if dir.length_squared() > diff.length_squared():
-                dir = diff
             move_and_slide(dir)
