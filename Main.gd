@@ -13,5 +13,7 @@ func _ready():
     focus_editor.connect("enchant", magic, "_on_enchant")
 
     magic.connect("inventory_changed", ui, "on_inventory_changed")
+    magic.connect("active", playfield, "on_equip_active")
+    magic.connect("passive", playfield, "on_equip_passive")
 
     playfield.connect("item_picked_up", magic, "_on_item_pickup")

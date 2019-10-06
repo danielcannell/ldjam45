@@ -5,6 +5,7 @@ const Player = preload("res://Playfield/Entities/Player.tscn")
 const Enemy = preload("res://Playfield/Entities/Enemy.tscn")
 const Item = preload("res://Playfield/Entities/Item.tscn")
 const Projectile = preload("res://Playfield/Entities/Projectile.tscn")
+const Swing = preload("res://Playfield/Entities/Swing.tscn")
 
 
 signal item_picked_up
@@ -14,6 +15,7 @@ var player
 var enemies = []
 var rooms = RoomBounds.new()
 var currentroom: Room = null
+var equipped_focus = null
 
 var item_cooldown = 0
 
@@ -72,27 +74,51 @@ func on_item_picked_up(item):
     emit_signal("tutorial_event", Globals.TutorialEvents.DEMO_MESSAGE_EVENT)
 
 
-func shoot():
+func on_equip_active(focus):
+    equipped_focus = focus
+
+
+func on_equip_passive(resistances, buffs):
+    pass
+
+
+func swing():
+    var s = Swing.instance()
+    s.init(equipped_focus, get_global_mouse_position() - player.position)
+    player.add_child(s)
+
+
+func shoot(type):
     var p = Projectile.instance()
-    p.init(Globals.Elements.FIRE, player.position, get_global_mouse_position(), 1e6)
+    p.init(type, player.position, get_global_mouse_position(), 1e6)
     add_child(p)
 
 
-func explode():
+func explode(type):
     for i in range(Config.EXPLOSION_NUM_PROJECTILES):
         var theta = (i * 6.283185307) / Config.EXPLOSION_NUM_PROJECTILES
         var target = player.position + Vector2(cos(theta), sin(theta))
         var p = Projectile.instance()
-        p.init(Globals.Elements.FIRE, player.position, target, Config.EXPLOSION_PROJECTILE_RANGE)
+        p.init(type, player.position, target, Config.EXPLOSION_PROJECTILE_RANGE)
         add_child(p)
 
 
 func activate_item():
-    if item_cooldown < 1e-6:
+    if item_cooldown < 1e-6 and equipped_focus:
         item_cooldown = 0.25
 
-        shoot()
-        # explode()
+        var action = equipped_focus.action().action
+        var type = equipped_focus.damage_type()
+        if action == Globals.Action.HIT:
+            swing()
+        elif action == Globals.Action.PROJECT:
+            assert(type != Globals.Elements._MAX)
+            shoot(type)
+        elif action == Globals.Action.EXPLODE:
+            assert(type != Globals.Elements._MAX)
+            explode(type)
+        else:
+            assert(false)
 
 
 func _process(delta):

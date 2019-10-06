@@ -44,7 +44,7 @@ func _on_focus_equip(focus: Focus):
     var action = focus.action()
     match action.mode:
         Globals.ActionMode.ACTIVE:
-            emit_signal("active", action.action, focus.damage_type(), focus.power)
+            emit_signal("active", focus)
         Globals.ActionMode.PASSIVE:
             var resist_foci := []
             var buff_foci := []
