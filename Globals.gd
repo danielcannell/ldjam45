@@ -114,6 +114,11 @@ enum TutorialEvents {
     DEMO_ACTION_EVENT,
 }
 
+const ENEMY_IMAGES = {
+    "grunt": preload("res://Art/grunt.png"),
+    "evil_wizard": preload("res://Art/evil_wizard.png"),
+}
+
 const COMPONENT_IMAGES = {
     ComponentType.ELEMENT: {
         Elements.FIRE: preload("res://Art/components/fire.png"),
@@ -216,3 +221,5 @@ const CONSTITUTION_NAMES = {
     Constitution.HEALTH: "Health",
     Constitution.SPEED: "Speed",
 }
+
+var ai_manager: AIManager = null

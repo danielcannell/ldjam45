@@ -2,7 +2,6 @@ extends Node2D
 
 
 const Player = preload("res://Playfield/Entities/Player.tscn")
-const Enemy = preload("res://Playfield/Entities/Enemy.tscn")
 const Item = preload("res://Playfield/Entities/Item.tscn")
 const Projectile = preload("res://Playfield/Entities/Projectile.tscn")
 const Swing = preload("res://Playfield/Entities/Swing.tscn")
@@ -21,7 +20,6 @@ var item_cooldown = 0
 
 onready var tilemap = find_node("TileMap")
 onready var roomcenter = find_node("RoomCenter")
-onready var ai_manager = $AI
 
 
 const DEBUG_ROOM_BOUNDS = false
@@ -32,9 +30,15 @@ func _init():
     add_child(player)
 
 
+func add_enemy(enemy: Enemy, x: float, y: float) -> void:
+    enemy.position = tilemap.map_to_world(Vector2(x, y))
+    add_child(enemy)
+
+
 func _ready():
-    ai_manager.playfield = self
-    ai_manager.player = player
+    Globals.ai_manager = $AI
+    Globals.ai_manager.playfield = self
+    Globals.ai_manager.player = player
 
     rooms.compute_bounds(tilemap)
     roomcenter.cell_size = tilemap.cell_size
@@ -46,12 +50,8 @@ func _ready():
     assert(currentroom != null)
     roomcenter.jump_to_room(currentroom)
 
-    var enemy = Enemy.instance()
-    enemy.position = tilemap.map_to_world(Vector2(3, 3))
-    #enemy.add_ai(AICharge.new(ai_manager, enemy, 32, 64, 16))
-    enemy.add_ai(AISpellcaster.new(ai_manager, enemy, 64, 128, 64, 32))
-    enemy.add_ai(AIWander.new(ai_manager, enemy, 1, 5, 8))
-    add_child(enemy)
+    add_enemy(EnemyTypes.grunt(), 5, 5)
+    add_enemy(EnemyTypes.grunt(), 3, 3)
 
     var world_items = [
         Globals.WorldItem.STICK,
