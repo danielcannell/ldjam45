@@ -8,7 +8,6 @@ var ai: Array = []
 const Projectile = preload("res://Playfield/Entities/Projectile.tscn")
 const Swing = preload("res://Playfield/Entities/Swing.tscn")
 
-const movement_speed: float = 32.0
 const attack_cooldown: float = 1.0
 const DEBUG_AI_GOAL = false
 
@@ -19,6 +18,7 @@ var image: Texture = null
 var sprite_width: float = 0
 var sprite_height: float = 0
 var weapon: Focus = null
+var movement_speed: float = 0
 
 onready var health_bar = $HealthBar
 onready var sprite = $Sprite
@@ -113,7 +113,7 @@ func attack(target: Node2D) -> void:
             s.position = Vector2(sign(dir.x) * 4, 4)
     elif current_goal.type == GoalHelpers.Type.ATTACK_SHOOT:
         var p = Projectile.instance()
-        p.init(Globals.Elements.FIRE, Vector2(0,0), target.position - position, 1e6)
+        p.init(weapon.component.type, position, target.position, 1e6)
         p.team = Globals.Team.ENEMY
         playfield.add_child(p)
     else:
