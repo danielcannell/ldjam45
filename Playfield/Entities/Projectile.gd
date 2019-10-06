@@ -1,9 +1,6 @@
 extends Area2D
 
 
-const Enemy = preload("res://Playfield/Entities/Enemy.tscn")
-
-
 const TEXTURES = {
     Globals.Elements.FIRE: preload("res://Art/fireball.png"),
 }
@@ -12,6 +9,7 @@ const TEXTURES = {
 var type
 var velocity = Vector2(200, 0)
 var ttl = 10000
+var team = Globals.Team.PLAYER
 
 const SPEED = 200
 
@@ -44,6 +42,10 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
+    if body.has_method("get_team"):
+        if body.get_team() == team:
+            return
+
     queue_free()
 
     if body.has_method("damage"):

@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://Playfield/Entities/AI/Manager.gd"
 }, {
 "base": "AIBase",
+"class": "AISpellcaster",
+"language": "GDScript",
+"path": "res://Playfield/Entities/AI/Spellcaster.gd"
+}, {
+"base": "AIBase",
 "class": "AIWander",
 "language": "GDScript",
 "path": "res://Playfield/Entities/AI/Wander.gd"
@@ -83,6 +88,7 @@ _global_script_class_icons={
 "AIBase": "",
 "AICharge": "",
 "AIManager": "",
+"AISpellcaster": "",
 "AIWander": "",
 "Actions": "",
 "Comparators": "",

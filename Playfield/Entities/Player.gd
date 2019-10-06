@@ -8,6 +8,10 @@ var health = 100
 onready var health_bar = $HealthBar
 
 
+func get_team():
+    return Globals.Team.PLAYER
+
+
 func damage(dmg):
     health = max(0, health - dmg)
 
