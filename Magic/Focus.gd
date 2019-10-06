@@ -37,7 +37,15 @@ func name():
 
 
 func flavour_text():
-    return "Test flavour text"
+    # Generic names
+    if component == null:
+        return Globals.FOCUS_FLAVOUR[subtype]
+
+    if Globals.ENCHANTED_FOCUS_FLAVOUR.has(subtype):
+        if Globals.ENCHANTED_FOCUS_FLAVOUR[subtype].has(component.subtype):
+            return Globals.ENCHANTED_FOCUS_FLAVOUR[subtype][component.subtype]
+
+    return Globals.ENCHANTED_FOCUS_FLAVOUR_TEMPLATES[subtype] % component.name()
 
 
 func action() -> Actions.FocusAction:
