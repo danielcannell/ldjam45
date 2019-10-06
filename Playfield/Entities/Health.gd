@@ -32,6 +32,7 @@ func speed_boost():
 
 
 func process(delta):
-    var heal_rate = buffs[Globals.Elements.WATER] - 1
+    var heal_rate = Config.HEAL_RATE * (buffs[Globals.Elements.WATER] - 1)
+    heal_rate -= Config.BURN_RATE * (buffs[Globals.Elements.FIRE] - 1)
     if abs(heal_rate) > 1e-5:
-        value = min(100, value + Config.HEAL_RATE * heal_rate * delta)
+        value = min(100, value + heal_rate * delta)
