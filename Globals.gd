@@ -204,3 +204,4 @@ const ELEMENT_NAMES = {
 }
 
 var ai_manager: AIManager = null
+var damage_popup_font: DynamicFont = null
