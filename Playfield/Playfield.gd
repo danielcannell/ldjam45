@@ -112,11 +112,11 @@ func activate_item():
         if action == Globals.Action.HIT:
             swing()
         elif action == Globals.Action.PROJECT:
-            assert(type != Globals.Elements._MAX)
-            shoot(type)
+            if type != Globals.Elements._MAX:
+                shoot(type)
         elif action == Globals.Action.EXPLODE:
-            assert(type != Globals.Elements._MAX)
-            explode(type)
+            if type != Globals.Elements._MAX:
+                explode(type)
         else:
             assert(false)
 

@@ -45,8 +45,7 @@ func _on_body_entered(body):
         if body.get_team() == team:
             return
 
-    queue_free()
-
     if body.has_method("damage"):
         # We have collided with an enemy!
         body.damage(10)
+        queue_free()
