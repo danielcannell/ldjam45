@@ -141,6 +141,14 @@ const FOCUS_NAMES = {
     Foci.RING: "Ring of Protection",
 }
 
+const FOCUS_FLAVOUR = {
+    Foci.STICK: "Oblongoid of ruggedness",
+    Foci.WAND: "The Elder Pooh-stick",
+    Foci.STAFF: "You shall not staff",
+    Foci.HAT: "Pointy",
+    Foci.RING: "Not the one"
+}
+
 # Templates for formatting enchanted focus names
 const ENCHANTED_FOCUS_NAME_TEMPLATES = {
     Foci.STICK: "Stick of %s",
@@ -148,6 +156,14 @@ const ENCHANTED_FOCUS_NAME_TEMPLATES = {
     Foci.STAFF: "Staff of Exploding %s",
     Foci.HAT: "Hat of %s Enhancement",
     Foci.RING: "Ring of %s Protection",
+}
+
+const ENCHANTED_FOCUS_FLAVOUR_TEMPLATES = {
+    Foci.STICK: "It's got %s on the end",
+    Foci.WAND: "Shoots %sbolts with great force",
+    Foci.STAFF: "Explodes with blasts of %s",
+    Foci.HAT: "Boosts %s",
+    Foci.RING: "You fell as if %s couldn't possible hurt you"
 }
 
 # Special cased focus names
@@ -159,6 +175,9 @@ const ENCHANTED_FOCUS_NAMES = {
         Elements.WIND: "Flute",
     },
 }
+
+# Special cased flavour text
+const ENCHANTED_FOCUS_FLAVOUR = {}
 
 const ELEMENT_NAMES = {
     Elements.FIRE: "Fire",
