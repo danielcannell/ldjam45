@@ -6,6 +6,11 @@ const EXPLOSION_PROJECTILE_RANGE = 50
 const PLAYER_START_X = 9
 const PLAYER_START_Y = 3
 
+const PLAYER_SPEED = 100
+const HEAL_RATE = 10
+const DAMAGE_REDUCTION_FACTOR = 1
+const Config.SPEED_BOOST_FACTOR = 1
+
 var player_resistances := {
     Globals.Elements.FIRE: 1.0,
     Globals.Elements.WATER: 1.0,

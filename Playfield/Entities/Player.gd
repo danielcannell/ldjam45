@@ -1,8 +1,6 @@
 extends KinematicBody2D
 
 
-var speed = 100
-
 var health = Health.new()
 
 onready var health_bar = $HealthBar
@@ -40,7 +38,7 @@ func get_input():
     if Input.is_action_pressed("player_right"):
         velocity.x += 1
 
-    return velocity.normalized() * speed
+    return velocity.normalized() * Config.PLAYER_SPEED * health.speed_boost()
 
 
 func _ready():
@@ -63,4 +61,5 @@ func _physics_process(delta):
 
 
 func _process(delta):
+    health.process(delta)
     health_bar.set_value(health.value)

@@ -31,8 +31,6 @@ func _on_item_pickup(item_type: int):
     _emit_inventory_changed()
 
 func _on_focus_equip(focus: Focus):
-    assert self.inventory.inactive_foci.has(focus)
-
     if self.inventory.active_foci[focus.type] != null:
         self.inventory.active_foci[focus.type].active = false
         self.inventory.inactive_foci.append(self.inventory.active_foci[focus.type])
@@ -69,6 +67,10 @@ func _on_enchant(focus: Focus, component: Component):
     self.inventory.inactive_components.erase(component)
     _emit_inventory_changed()
 
+    if focus.active:
+        # Re-equip the focus to update stats
+        _on_focus_equip(focus)
+
 func _on_disenchant(focus: Focus):
     assert self.inventory.all_foci.has(focus)
     assert focus.component != null
@@ -76,3 +78,7 @@ func _on_disenchant(focus: Focus):
     self.inventory.inactive_components.append(focus.component)
     focus.component = null
     _emit_inventory_changed()
+
+    if focus.active:
+        # Re-equip the focus to update stats
+        _on_focus_equip(focus)
