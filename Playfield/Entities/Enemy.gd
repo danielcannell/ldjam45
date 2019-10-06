@@ -5,10 +5,15 @@ class_name Enemy
 var health = 100
 var ai: Array = []
 
-const movement_speed = 32
+const Projectile = preload("res://Playfield/Entities/Projectile.tscn")
+
+const movement_speed: float = 32.0
+const attack_cooldown: float = 2.0
 const DEBUG_AI_GOAL = true
 
 var current_goal = null
+var next_attack_time: float = 0
+var time: float = 0
 
 onready var health_bar = $HealthBar
 
@@ -74,13 +79,25 @@ func get_new_ai_goal() -> void:
         update()
 
 
+func attack(target: Node2D) -> void:
+    if next_attack_time > time:
+        return
+
+    next_attack_time = time + attack_cooldown
+    var p = Projectile.instance()
+    p.init(Globals.Elements.FIRE, Vector2(0,0), target.position - position, 1e6)
+    p.team = Globals.Team.ENEMY
+    add_child(p)
+
+
 func _physics_process(delta):
+    time += delta
     get_new_ai_goal()
 
     if current_goal:
         if current_goal.type == GoalHelpers.Type.ATTACK:
             # Attack enemy
-            pass
+            attack(current_goal.target)
 
         elif current_goal.type == GoalHelpers.Type.GO_TO:
             # Move toward the target
