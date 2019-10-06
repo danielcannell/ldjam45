@@ -10,6 +10,6 @@ static func grunt() -> Enemy:
     enemy.add_ai(AICharge.new(Globals.ai_manager, enemy, aggro_distance, lose_sight_distance, attack_range))
     enemy.add_ai(AIWander.new(Globals.ai_manager, enemy, 1, 5, 8))
     enemy.image = Globals.ENEMY_IMAGES["grunt"]
-    enemy.sprite_width = 16.0
+    enemy.sprite_width = 14.0
     enemy.sprite_height = 16.0
     return enemy

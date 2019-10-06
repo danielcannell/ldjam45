@@ -2,7 +2,8 @@ extends KinematicBody2D
 
 
 var speed = 100
-var health = 100
+
+var health = Health.new()
 
 
 onready var health_bar = $HealthBar
@@ -15,7 +16,7 @@ func get_team():
 
 
 func damage(dmg):
-    health = max(0, health - dmg)
+    health.damage(dmg)
 
 
 func on_equip(focus):
@@ -59,4 +60,4 @@ func _physics_process(delta):
 
 
 func _process(delta):
-    health_bar.set_value(health)
+    health_bar.set_value(health.value)

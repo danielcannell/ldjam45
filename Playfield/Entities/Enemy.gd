@@ -1,15 +1,15 @@
 extends KinematicBody2D
 class_name Enemy
 
+var health = Health.new()
 
-var health = 100
 var ai: Array = []
 
 const Projectile = preload("res://Playfield/Entities/Projectile.tscn")
 
 const movement_speed: float = 32.0
 const attack_cooldown: float = 1.0
-const DEBUG_AI_GOAL = true
+const DEBUG_AI_GOAL = false
 
 var current_goal = null
 var next_attack_time: float = 0
@@ -36,9 +36,9 @@ func get_team():
 
 
 func damage(dmg):
-    health = max(0, health - dmg)
+    health.damage(dmg)
 
-    if health == 0:
+    if not health.alive():
         queue_free()
 
     update()
@@ -49,7 +49,7 @@ func add_ai(strategy: AIBase) -> void:
 
 
 func _draw():
-    health_bar.set_value(health)
+    health_bar.set_value(health.value)
 
     if DEBUG_AI_GOAL and current_goal:
         if current_goal.type == GoalHelpers.Type.GO_TO:
