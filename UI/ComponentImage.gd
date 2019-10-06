@@ -1,8 +1,12 @@
 extends TextureRect
 
+
+signal enchant  # Component
+
+
 func can_drop_data(_pos, data):
-    return true
+    return data is Component
 
 
 func drop_data(_pos, data):
-    pass
+    emit_signal("enchant", data)

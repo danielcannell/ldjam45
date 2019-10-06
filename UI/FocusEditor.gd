@@ -20,6 +20,7 @@ var focus: Focus
 func _ready():
     equip_button.connect("button_down", self, "on_equip")
     disenchant_button.connect("button_down", self, "on_disenchant")
+    component_image.connect("enchant", self, "on_enchant")
 
 
 func show_focus(f):
@@ -45,3 +46,7 @@ func on_equip():
 
 func on_disenchant():
     emit_signal("disenchant", focus)
+
+
+func on_enchant(component):
+    emit_signal("enchant", focus, component)

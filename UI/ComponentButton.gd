@@ -1,7 +1,11 @@
 extends TextureButton
 
 
-func _init(component: Component):
+var component
+
+
+func _init(c: Component):
+    component = c
     texture_normal = component.image()
     expand = true
     stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
@@ -15,4 +19,4 @@ func get_drag_data(_pos):
     btn.rect_size = Vector2(50, 50)
     btn.expand = true
     set_drag_preview(btn)
-    return 'test'
+    return component
