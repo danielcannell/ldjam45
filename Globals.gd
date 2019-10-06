@@ -74,10 +74,10 @@ enum Tiles {
 
 const COMPONENT_IMAGES = {
     ComponentType.ELEMENT: {
-        Elements.FIRE: preload("res://Art/fireball.png"),
-        Elements.WATER: preload("res://Art/fireball.png"),
-        Elements.WIND: preload("res://Art/fireball.png"),
-        Elements.ROCK: preload("res://Art/fireball.png"),
+        Elements.FIRE: preload("res://Art/components/fire.png"),
+        Elements.WATER: preload("res://Art/components/water.png"),
+        Elements.WIND: preload("res://Art/components/wind.png"),
+        Elements.ROCK: preload("res://Art/components/rock.png"),
     },
     ComponentType.CONSTITUTION: {
         Constitution.HEALTH: preload("res://Art/fireball.png"),
