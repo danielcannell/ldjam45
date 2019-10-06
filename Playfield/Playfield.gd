@@ -18,6 +18,7 @@ var currentroom: Room = null
 var equipped_focus = null
 
 var item_cooldown = 0
+var need_to_activate = false
 
 onready var tilemap = find_node("TileMap")
 onready var roomcenter = find_node("RoomCenter")
@@ -106,6 +107,7 @@ func explode(type):
 
 
 func activate_item():
+    print("In activate item")
     if item_cooldown < 1e-6 and equipped_focus:
         item_cooldown = 0.25
 
@@ -122,11 +124,17 @@ func activate_item():
         else:
             assert(false)
 
+func _unhandled_input(event):
+    if event.is_action_pressed("activate_item_0"):
+        need_to_activate = true
+
+func input(event):
+    print("Got input")
 
 func _process(delta):
-    # For now we just have one active item slot
-    if Input.is_action_just_pressed("activate_item_0"):
+    if need_to_activate:
         activate_item()
+        need_to_activate = false
 
     item_cooldown = max(0, item_cooldown - delta)
 
