@@ -9,7 +9,7 @@ func get_resistance(foci: Array) -> Dictionary:
     for f in foci:
         assert f.action().equals(Actions_.ELEM_PROTECT)
         if f.element != null:
-            resistances[f.element.type] += f.power
+            resistances[f.element.type] *= f.power
 
     return resistances
 
@@ -19,6 +19,6 @@ func get_buffs(foci: Array) -> Dictionary:
     for f in foci:
         assert f.action().equals(Actions_.MULTIPLIER)
         if f.element != null:
-            buffs[f.element.type] += f.power
+            buffs[f.element.type] *= f.power
 
     return buffs
