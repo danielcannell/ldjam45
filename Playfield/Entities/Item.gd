@@ -4,6 +4,7 @@ extends Area2D
 const TEXTURES = {
     Globals.WorldItem.HAT: preload("res://Art/foci/hat.png"),
     Globals.WorldItem.TORCH: preload("res://Art/foci/torch.png"),
+    Globals.WorldItem.WAND: preload("res://Art/foci/wand.png"),
 }
 
 

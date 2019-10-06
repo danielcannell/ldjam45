@@ -60,6 +60,11 @@ func _ready():
     torch.set_type(Globals.WorldItem.TORCH)
     add_child(torch)
 
+    var wand = Item.instance()
+    wand.position = tilemap.map_to_world(Vector2(11, 10))
+    wand.set_type(Globals.WorldItem.WAND)
+    add_child(wand)
+
 
 func on_item_picked_up(item):
     emit_signal("item_picked_up", item)

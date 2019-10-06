@@ -80,13 +80,12 @@ _global_script_classes=[ {
 "path": "res://Magic/StatusEffects.gd"
 } ]
 _global_script_class_icons={
-"Actions": "",
-"Comparators": "",
 "AIBase": "",
 "AICharge": "",
 "AIManager": "",
 "AIWander": "",
-"Action": "",
+"Actions": "",
+"Comparators": "",
 "Component": "",
 "Enemy": "",
 "Focus": "",

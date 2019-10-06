@@ -27,14 +27,16 @@ func _emit_inventory_changed():
     emit_signal("inventory_changed", comp_list, foci_list)
 
 func _on_item_pickup(item_type: int):
-    return self.inventory._on_item_pickup(item_type)
+    self.inventory._on_item_pickup(item_type)
+    _emit_inventory_changed()
 
 func _on_focus_equip(focus: Focus):
     assert self.inventory.inactive_foci.has(focus)
+
     if self.inventory.active_foci[focus.type] != null:
         self.inventory.active_foci[focus.type].active = false
         self.inventory.inactive_foci.append(self.inventory.active_foci[focus.type])
-    
+
     focus.active = true
     self.inventory.active_foci[focus.type] = focus
     self.inventory.inactive_foci.erase(focus)
@@ -42,18 +44,20 @@ func _on_focus_equip(focus: Focus):
     var action = focus.action()
     match action.mode:
         Globals.ActionMode.ACTIVE:
-            emit_signal("active", action.action, focus.component.subtype, focus.power)
+            emit_signal("active", action.action, focus.damage_type(), focus.power)
         Globals.ActionMode.PASSIVE:
             var resist_foci := []
             var buff_foci := []
             for f in self.inventory.active_foci:
-                if f.action().action.equals(actions.ELEM_PROTECT):
+                if f == null:
+                    continue
+                elif f.action().equals(actions.ELEM_PROTECT):
                     resist_foci.append(f)
-                elif f.action().action.equals(actions.MULTIPLIER):
+                elif f.action().equals(actions.MULTIPLIER):
                     buff_foci.append(f)
             var resistances: Dictionary = self.status_effects.get_resistance(resist_foci)
             var buffs: Dictionary = self.status_effects.get_buffs(buff_foci)
-            
+
             emit_signal("passive", resistances, buffs)
     _emit_inventory_changed()
 
@@ -63,3 +67,6 @@ func _on_enchant(focus: Focus, component: Component):
     focus.component = component
     self.inventory.inactive_components.erase(component)
     _emit_inventory_changed()
+
+func _on_disenchant(focus: Focus):
+    pass

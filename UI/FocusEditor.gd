@@ -24,10 +24,18 @@ func _ready():
 
 func show_focus(f):
     focus = f
+    update_view()
+    show()
+
+
+func update_view():
+    if focus == null:
+        return
+
     focus_name.text = focus.name()
     focus_flavour_text.text = focus.flavour_text()
     focus_image.texture = focus.image()
-    show()
+    equip_button.disabled = focus.active
 
 
 func on_equip():

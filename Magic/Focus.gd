@@ -43,6 +43,7 @@ func flavour_text():
 func action() -> Actions.FocusAction:
     return Actions_.by_focus[self.subtype]
 
+
 func equals(other: Focus) -> bool:
     return (
         self.type == other.type
@@ -50,3 +51,10 @@ func equals(other: Focus) -> bool:
         and self.component.equals(other.component)
         and self.power == other.power
     )
+
+
+func damage_type():
+    if component == null:
+        return Globals.Elements._MAX
+    else:
+        return component.subtype

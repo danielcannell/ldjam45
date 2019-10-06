@@ -4,11 +4,11 @@ class_name Actions
 class FocusAction:
     var mode: int  # enum Globals.ActionMode
     var action: int  # enum Globals.Action
-    
+
     func _init(mode: int, action: int):
         self.mode = mode
         self.action = action
-    
+
     func equals(other: FocusAction) -> bool:
         return self.mode == other.mode and self.action == other.action
 

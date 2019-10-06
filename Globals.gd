@@ -4,6 +4,7 @@ extends Node
 enum WorldItem {
     HAT,
     TORCH,
+    WAND,
 
     _MAX,
 }

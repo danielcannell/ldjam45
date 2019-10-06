@@ -7,7 +7,7 @@ static func component(a: Component, b: Component) -> bool:
         return true
     else:
         return false
-        
+
 static func focus(a: Focus, b: Focus) -> bool:
     if a.type < b.type:
         return true

@@ -1,15 +1,17 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-# Called when the node enters the scene tree for the first time.
+onready var playfield = $ViewportContainer/Viewport/Playfield
+onready var magic = $Magic
+onready var focus_editor = $UI/CanvasLayer/FocusEditor
+onready var ui = $UI
+
+
 func _ready():
-    var playfield = $ViewportContainer/Viewport/Playfield
-    var inventory = $Magic # Inventory script on Magic node
-    playfield.connect("item_picked_up", inventory, "_on_item_pickup")
+    focus_editor.connect("disenchant", magic, "_on_disenchant")
+    focus_editor.connect("equip", magic, "_on_focus_equip")
+    focus_editor.connect("enchant", magic, "_on_enchant")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#    pass
+    magic.connect("inventory_changed", ui, "on_inventory_changed")
+
+    playfield.connect("item_picked_up", magic, "_on_item_pickup")
