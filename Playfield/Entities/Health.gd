@@ -15,7 +15,8 @@ func set_passives(rs, bs):
 
 
 func damage(dmg, type):
-    dmg *= self.resistances[type]
+    if type < Globals.Elements._MAX:
+        dmg *= self.resistances[type]
     value = max(0, value - dmg)
 
 

@@ -11,7 +11,7 @@ var inactive_components := []
 
 func pickup_focus(type, subtype):
     var power = 1.0
-    if type == Globals.FocusType.HAT:
+    if type == Globals.FocusType.RING:
         power = 0.0
 
     var f := Focus.new(type, subtype, null, power)
