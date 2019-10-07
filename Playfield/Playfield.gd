@@ -38,7 +38,8 @@ func _init():
     Globals.damage_popup_font.size = 36
 
 
-func add_enemy(enemy: Enemy, x: float, y: float) -> void:
+func add_enemy(enemy: Enemy, x: float, y: float, loot: int = Globals.WorldItem._MAX) -> void:
+    enemy.loot = loot
     enemy.position = tilemap.map_to_world(Vector2(x, y))
     enemy.connect("damaged", self, "on_entity_damaged")
     add_child(enemy)
@@ -60,10 +61,10 @@ func _ready():
     roomcenter.jump_to_room(currentroom)
 
     add_enemy(EnemyTypes.grunt(), 5, 5)
-    add_enemy(EnemyTypes.evil_wizard(), 3, 3)
+    add_enemy(EnemyTypes.evil_wizard(), 3, 3, Globals.WorldItem.HAT)
 
-    add_enemy(EnemyTypes.fire_elemental(), 3, 10)
-    add_enemy(EnemyTypes.water_elemental(), 6, 10)
+    add_enemy(EnemyTypes.fire_elemental(), 3, 10, Globals.WorldItem.FIRE)
+    add_enemy(EnemyTypes.water_elemental(), 6, 10, Globals.WorldItem.WATER)
 
     var world_items = [
         Globals.WorldItem.STICK,

@@ -11,6 +11,7 @@ var ai: Array = []
 
 const Projectile = preload("res://Playfield/Entities/Projectile.tscn")
 const Swing = preload("res://Playfield/Entities/Swing.tscn")
+const Item = preload("res://Playfield/Entities/Item.tscn")
 
 const attack_cooldown: float = 1.0
 const DEBUG_AI_GOAL = false
@@ -23,6 +24,7 @@ var sprite_width: float = 0
 var sprite_height: float = 0
 var weapon: Focus = null
 var movement_speed: float = 0
+var loot = Globals.WorldItem._MAX
 
 onready var health_bar = $HealthBar
 onready var sprite = $Sprite
@@ -48,6 +50,11 @@ func damage(dmg, type):
     emit_signal("damaged", self, dealt)
 
     if not health.alive():
+        if loot < Globals.WorldItem._MAX:
+            var drop = Item.instance()
+            drop.position = position
+            drop.set_type(loot)
+            playfield.add_child(drop)
         queue_free()
 
     update()
