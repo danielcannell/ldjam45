@@ -55,4 +55,6 @@ func _on_body_entered(body):
 
     if body.has_method("damage"):
         # We have collided with an enemy!
-        body.damage(10, type)
+        # We use call_deferred because otherwise we sometimes get the following error:
+        # ERROR: Can't change this state while flushing queries.
+        body.call_deferred("damage", 10, type)
