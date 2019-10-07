@@ -132,7 +132,7 @@ func _ready():
     add_item(Globals.WorldItem.WIND, -40, -27)
     add_enemy(EnemyTypes.fire_elemental(), -29, -27)
     add_enemy(EnemyTypes.water_elemental(), -36, -20)
-    
+
     # Bottom power-grunt room
     add_enemy(EnemyTypes.grunt(rand_range(25, 40), 0.7), -13, 12)
     add_enemy(EnemyTypes.grunt(rand_range(25, 40), 0.7), -6, 13)
@@ -141,11 +141,11 @@ func _ready():
     add_enemy(EnemyTypes.grunt(rand_range(25, 40), 0.7), -7, 19)
     add_enemy(EnemyTypes.grunt(rand_range(25, 40), 0.7), -2, 21)
     add_enemy(EnemyTypes.grunt(rand_range(25, 40), 0.7), -9, 17)
-    
+
     # Bottom wizard room
-    add_enemy(EnemyTypes.evil_wizard(randi() % Globals.Elements._MAX), -7, 32)
+    add_enemy(EnemyTypes.evil_wizard(randi() % Globals.Elements._MAX), -7, 32, Globals.WorldItem.WAND)
     add_enemy(EnemyTypes.evil_wizard(randi() % Globals.Elements._MAX), -3, 35)
-    
+
     # Balrog
     add_enemy(EnemyTypes.balrog(), 24, 28)
 
