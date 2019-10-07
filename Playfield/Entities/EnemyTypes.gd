@@ -81,3 +81,29 @@ static func water_elemental() -> Enemy:
     var type: Element = Element.new(Globals.Elements.WATER)
     enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STAFF, type, 1.0)
     return enemy
+
+
+static func balrog() -> Enemy:
+    var enemy = EnemyScene.instance()
+    var aggro_distance: float = 999999.0
+    var lose_sight_distance: float = 999999.0
+    var attack_range: float = 999999.0
+    var keep_away_distance: float = 0.0
+
+    enemy.add_ai(AISpellcaster.new(Globals.ai_manager, enemy, aggro_distance, lose_sight_distance, attack_range, keep_away_distance))
+    enemy.add_ai(AIGoHome.new(Globals.ai_manager, enemy))
+
+    enemy.set_passives([Globals.Elements.FIRE, Globals.Elements.WATER], [], [])
+
+    enemy.movement_speed = 2.0
+    enemy.image = Globals.ENEMY_IMAGES["balrog"]
+    enemy.sprite_width = 128.0
+    enemy.sprite_height = 140.0
+    var type: Element = Element.new(Globals.Elements.FIRE)
+    enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STAFF, type, 5.0)
+
+    enemy.explode_count = 30
+    enemy.explode_range = 1e6
+    enemy.attack_cooldown = 1.0
+
+    return enemy

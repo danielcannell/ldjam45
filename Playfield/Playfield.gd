@@ -124,6 +124,9 @@ func _ready():
     add_enemy(EnemyTypes.water_elemental(), -36, -20)
 
 
+    add_enemy(EnemyTypes.balrog(), 24, 28)
+
+
 
 func on_item_picked_up(item):
     emit_signal("item_picked_up", item)

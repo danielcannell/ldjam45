@@ -6,7 +6,6 @@ class_name AIGoHome
 # Return to where it started
 
 
-var current_room = null
 var home_position = null
 
 
