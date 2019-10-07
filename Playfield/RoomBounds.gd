@@ -50,7 +50,7 @@ func set_cell(x: int, y: int, val: int) -> void:
 
 # Return true if this tile acts as a room boundary
 func tile_is_boundary(tile: int) -> bool:
-    if tile == Globals.Tiles.Wall1 or tile == Globals.Tiles.Door1 or tile == Globals.Tiles.Door2:
+    if Globals.TileTypes.Walls.has(tile) or Globals.TileTypes.Doors.has(tile):
         return true
     return false
 

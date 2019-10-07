@@ -200,4 +200,5 @@ activate_item_3={
 
 [rendering]
 
+environment/default_clear_color=Color( 0.109804, 0.109804, 0.109804, 1 )
 environment/default_environment="res://default_env.tres"

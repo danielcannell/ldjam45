@@ -85,11 +85,37 @@ enum Team {
 }
 
 enum Tiles {
-    Wall1 = 0,
-    Door1 = 16,
-    Door2 = 17,
+    Wall1,
+    Wall2,
+    Wall3,
+    Wall4,
+    Wall5,
+    Wall6,
+    Wall7,
+    Wall8,
+    Wall9,
+    Wall10,
+    Wall11,
+    Wall12,
+    Wall13,
+    Wall14,
+    Wall15,
+    Floor1,
+    Door1,
+    Door2,
+    Wall16,
+    Wall17,
+    Wall18
 
     _MAX
+}
+
+const TileTypes = {
+    "Walls": [Tiles.Wall1, Tiles.Wall2, Tiles.Wall3, Tiles.Wall4, Tiles.Wall5, Tiles.Wall6, Tiles.Wall7, Tiles.Wall8,
+              Tiles.Wall9, Tiles.Wall10, Tiles.Wall11, Tiles.Wall12, Tiles.Wall13, Tiles.Wall14, Tiles.Wall15, Tiles.Wall16,
+              Tiles.Wall17, Tiles.Wall18],
+    "Doors": [Tiles.Door1, Tiles.Door2],
+    "Floors": [Tiles.Floor1],
 }
 
 enum TutorialEvents {
