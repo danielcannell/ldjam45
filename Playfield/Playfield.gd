@@ -146,10 +146,8 @@ func _ready():
     add_enemy(EnemyTypes.evil_wizard(randi() % Globals.Elements._MAX), -7, 32)
     add_enemy(EnemyTypes.evil_wizard(randi() % Globals.Elements._MAX), -3, 35)
     
-
     # Balrog
     add_enemy(EnemyTypes.balrog(), 24, 28)
-
 
 
 func on_item_picked_up(item):
