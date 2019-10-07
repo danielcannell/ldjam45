@@ -2,7 +2,7 @@ class_name EnemyTypes
 
 const EnemyScene = preload("res://Playfield/Entities/Enemy.tscn")
 
-static func grunt(speed: float = 32.0) -> Enemy:
+static func grunt(speed: float = 32.0, power: float = 0.1) -> Enemy:
     var enemy = EnemyScene.instance()
     var aggro_distance: float = 64.0
     var lose_sight_distance: float = 96.0
@@ -17,7 +17,7 @@ static func grunt(speed: float = 32.0) -> Enemy:
     enemy.sprite_height = 20.0
     var rock: Element = Element.new(Globals.Elements.ROCK)
     enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STICK, rock, 1.0)
-    enemy.weapon.power = 0.1
+    enemy.weapon.power = power
     enemy.set_max_health(20)
     return enemy
 
@@ -40,8 +40,35 @@ static func evil_wizard(elem: int = Globals.Elements.FIRE) -> Enemy:
     enemy.sprite_height = 22.0
     var type: Element = Element.new(elem)
     enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.WAND, type, 1.0)
+    enemy.set_passives([], [Globals.Elements.ROCK], [])
     return enemy
 
+
+static func staff_wizard(
+    elem: int = Globals.Elements.FIRE) -> Enemy:
+    var enemy = EnemyScene.instance()
+    var aggro_distance: float = 64.0
+    var lose_sight_distance: float = 128.0
+    var attack_range: float = 64.0
+    var keep_away_distance: float = 32.0
+
+    var spellcaster := AISpellcaster.new(Globals.ai_manager, enemy, aggro_distance, lose_sight_distance, attack_range, keep_away_distance)
+    spellcaster.only_one_room = false
+    enemy.add_ai(spellcaster)
+    enemy.add_ai(AIWander.new(Globals.ai_manager, enemy, 1, 5, 8))
+
+    enemy.movement_speed = 100.0
+    enemy.image = Globals.ENEMY_IMAGES["evil_wizard"]
+    enemy.sprite_width = 14.0
+    enemy.sprite_height = 22.0
+    var type: Element = Element.new(elem)
+    enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STAFF, type, 1.0)
+    enemy.set_max_health(50)
+    enemy.explode_count = 5
+    enemy.explode_range = 80.0
+    enemy.attack_cooldown = 2.0
+    enemy.set_passives([], [Globals.Elements.ROCK], [])
+    return enemy
 
 static func fire_elemental() -> Enemy:
     var enemy = EnemyScene.instance()

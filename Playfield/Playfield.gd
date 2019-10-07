@@ -105,28 +105,49 @@ func _ready():
     assert(currentroom != null)
     roomcenter.jump_to_room(currentroom)
 
+    # Outside first room
     add_enemy(EnemyTypes.grunt(rand_range(25, 40)), 9, 1)
     add_enemy(EnemyTypes.grunt(rand_range(25, 40)), 11, 6)
     add_enemy(EnemyTypes.grunt(rand_range(25, 40)), 13, 0)
 
+    # Wizard mini-boss antechamber
     add_item(Globals.WorldItem.STICK, 32, 3)
 
+    # Wizard mini-boss
     add_enemy(EnemyTypes.evil_wizard(randi() % Globals.Elements._MAX), 23, -10, Globals.WorldItem.HAT)
-    add_enemy(EnemyTypes.grunt(48.0), 22, -9, Globals.WorldItem.ROCK)
+    add_enemy(EnemyTypes.grunt(48.0, 0.5), 22, -9, Globals.WorldItem.ROCK)
 
+    # Corridor chamber
+    add_enemy(EnemyTypes.staff_wizard(randi() % Globals.Elements._MAX), -1, -13, Globals.WorldItem.STAFF)
+    add_enemy(EnemyTypes.staff_wizard(randi() % Globals.Elements._MAX), 1, -10)
+
+    # Fire and water rooms
     var left_room_elem = Globals.Elements.FIRE if randi() % 2 == 0 else Globals.Elements.WATER
     var right_room_elem = Globals.Elements.WATER if left_room_elem == Globals.Elements.FIRE else Globals.Elements.FIRE
-    
     populate_left_elemental_room(left_room_elem)
     populate_right_elemental_room(right_room_elem)
-    
-    add_enemy(EnemyTypes.fire_elemental(), -29, -27)
-    add_enemy(EnemyTypes.water_elemental(), -36, -20)
 
-
+    # Elemental boss room
     add_enemy(EnemyTypes.elemental_boss(), -39, -26, Globals.WorldItem.RING)
     add_item(Globals.WorldItem.WIND, -40, -27)
+    add_enemy(EnemyTypes.fire_elemental(), -29, -27)
+    add_enemy(EnemyTypes.water_elemental(), -36, -20)
+    
+    # Bottom power-grunt room
+    add_enemy(EnemyTypes.grunt(rand_range(25, 40), 0.7), -13, 12)
+    add_enemy(EnemyTypes.grunt(rand_range(25, 40), 0.7), -6, 13)
+    add_enemy(EnemyTypes.grunt(rand_range(25, 40), 0.7), -4, 18)
+    add_enemy(EnemyTypes.grunt(rand_range(25, 40), 0.7), -12, 22)
+    add_enemy(EnemyTypes.grunt(rand_range(25, 40), 0.7), -7, 19)
+    add_enemy(EnemyTypes.grunt(rand_range(25, 40), 0.7), -2, 21)
+    add_enemy(EnemyTypes.grunt(rand_range(25, 40), 0.7), -9, 17)
+    
+    # Bottom wizard room
+    add_enemy(EnemyTypes.evil_wizard(randi() % Globals.Elements._MAX), -7, 32)
+    add_enemy(EnemyTypes.evil_wizard(randi() % Globals.Elements._MAX), -3, 35)
+    
 
+    # Balrog
     add_enemy(EnemyTypes.balrog(), 24, 28)
 
 
