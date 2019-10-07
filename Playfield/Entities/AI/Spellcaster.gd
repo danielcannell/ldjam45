@@ -13,6 +13,7 @@ var see_range: float = 0
 var lose_sight_range: float = 0
 var attack_range: float = 0
 var keep_away_range: float = 0
+var only_one_room: bool = true
 
 func _init(manager, entity, see_range: int, lose_sight_range: int, attack_range: int, keep_away_range: int).(manager, entity):
     self.see_range = see_range
@@ -32,7 +33,7 @@ func think():
 
     if tracking_player:
         var dist := get_pos().distance_to(tracking_player.position)
-        if dist > lose_sight_range or player_room != current_room:
+        if dist > lose_sight_range or (only_one_room and (player_room != current_room)):
             tracking_player = null
             return GoalHelpers.idle()
         elif dist < keep_away_range:

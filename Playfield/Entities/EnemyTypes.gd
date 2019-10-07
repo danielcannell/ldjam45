@@ -29,7 +29,9 @@ static func evil_wizard(elem: int = Globals.Elements.FIRE) -> Enemy:
     var attack_range: float = 64.0
     var keep_away_distance: float = 32.0
 
-    enemy.add_ai(AISpellcaster.new(Globals.ai_manager, enemy, aggro_distance, lose_sight_distance, attack_range, keep_away_distance))
+    var spellcaster := AISpellcaster.new(Globals.ai_manager, enemy, aggro_distance, lose_sight_distance, attack_range, keep_away_distance)
+    spellcaster.only_one_room = false
+    enemy.add_ai(spellcaster)
     enemy.add_ai(AIWander.new(Globals.ai_manager, enemy, 1, 5, 8))
 
     enemy.movement_speed = 100.0
