@@ -25,6 +25,16 @@ func _ready():
     # collision masks are set so that this will happen if we hit an enemy or a
     # wall
     connect("body_entered", self, "_on_body_entered")
+    
+    # This signal is emitted when an area enters the area. This is for
+    # collisions with other projectiles.
+    connect("area_entered", self, "_on_projectile_collision")
+
+
+func _on_projectile_collision(area: Area2D):
+    if area.has_method("_on_projectile_collision"):
+        if Globals.ELEMENT_CANCELLATION[type].has(area.type):
+            queue_free()
 
 
 func _physics_process(delta):

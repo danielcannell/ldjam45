@@ -205,3 +205,10 @@ const ELEMENT_NAMES = {
 
 var ai_manager: AIManager = null
 var damage_popup_font: DynamicFont = null
+
+const ELEMENT_CANCELLATION = {
+    Elements.FIRE: [Elements.WATER],
+    Elements.WATER: [Elements.FIRE],
+    Elements.ROCK: [Elements.WIND],
+    Elements.WIND: [Elements.ROCK],
+}
