@@ -4,6 +4,7 @@ extends WindowDialog
 signal disenchant  # Focus
 signal equip  # Focus
 signal enchant  # Focus, Element
+signal tutorial_event
 
 
 onready var focus_name := $VBoxContainer/FocusName
@@ -26,6 +27,8 @@ func show_focus(f):
     focus = f
     update_view()
     show()
+
+    emit_signal("tutorial_event", Globals.TutorialEvents.FOCUS_EDITOR_OPEN)
 
 
 func update_view():

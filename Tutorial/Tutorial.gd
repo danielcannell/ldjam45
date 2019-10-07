@@ -9,8 +9,28 @@ var cur_idx = 0
 # Tutorial Messages - when a tutorial event just wants to show some text.
 # ----------------------------------------------------------------------------
 var messages = {
-    Globals.TutorialEvents.DEMO_MESSAGE_EVENT: ["demo_message1", "demo_message2"],
+    Globals.TutorialEvents.FOCUS_PICKUP: ["FOCUS_PICKUP_MESSAGE"],
+    Globals.TutorialEvents.ELEMENT_PICKUP: ["ELEMENT_PICKUP_MESSAGE"],
+    Globals.TutorialEvents.FOCUS_EDITOR_OPEN: ["FOCUS_EDITOR_OPEN_MESSAGE"],
+    #ENEMY_SIGHTING,
+
+    # Globals.TutorialEvents.DEMO_MESSAGE_EVENT: ["demo_message1", "demo_message2"],
 }
+
+const FOCUS_PICKUP_MESSAGE = """You have picked up a weapon!
+
+Click it in the foci pane to equip it"""
+
+const ELEMENT_PICKUP_MESSAGE = """You have picked up an Element!
+
+You can use the element to enchant a Magical Focus. Who knows what will happen?!
+"""
+
+const FOCUS_EDITOR_OPEN_MESSAGE = """You have openned the Focus Editor.
+
+Click the Equip button to equip the focus as a weapon.
+Drag an Element onto the Focus to enchant it.
+"""
 
 const demo_message1 = "This is an tutorial message."
 const demo_message2 = """This is another tutorial message.
@@ -22,7 +42,7 @@ It supports newlines, [u]underlines[/u], [b]bold[/b] and other bbtext stuff."""
 # Tutorial Actions - when the tutorial event wants a custom handler function
 # ----------------------------------------------------------------------------
 var action_handlers = {
-    Globals.TutorialEvents.DEMO_ACTION_EVENT: "handle_demo_action_event",
+    # Globals.TutorialEvents.DEMO_ACTION_EVENT: "handle_demo_action_event",
 }
 
 
@@ -35,7 +55,7 @@ func handle_demo_action_event():
 # ----------------------------------------------------------------------------
 func _ready():
     popup.get_close_button().visible = false
-    call_deferred("handle_tutorial_event", Globals.TutorialEvents.DEMO_ACTION_EVENT)
+    # call_deferred("handle_tutorial_event", Globals.TutorialEvents.DEMO_ACTION_EVENT)
 
 
 func handle_tutorial_event(ev):

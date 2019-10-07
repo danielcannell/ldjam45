@@ -88,7 +88,6 @@ func _ready():
 
 func on_item_picked_up(item):
     emit_signal("item_picked_up", item)
-    emit_signal("tutorial_event", Globals.TutorialEvents.DEMO_MESSAGE_EVENT)
 
 
 func on_equip_active(focus):

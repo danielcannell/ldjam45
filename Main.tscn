@@ -32,4 +32,4 @@ render_target_update_mode = 3
 [node name="Playfield" parent="ViewportContainer/Viewport" instance=ExtResource( 6 )]
 
 [node name="Tutorial" parent="." instance=ExtResource( 7 )]
-[connection signal="tutorial_event" from="ViewportContainer/Viewport/Playfield" to="Tutorial" method="handle_tutorial_event" flags=3]
+

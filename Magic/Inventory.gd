@@ -1,6 +1,10 @@
 extends Node
 class_name Inventory
 
+
+signal tutorial_event
+
+
 # Slots ordered by enum Globals.FocusType
 var active_foci := [null, null, null]
 var inactive_foci := []
@@ -10,6 +14,8 @@ var inactive_elements := []
 
 
 func pickup_focus(type, subtype):
+    emit_signal("tutorial_event", Globals.TutorialEvents.FOCUS_PICKUP)
+
     var power = 1.0
     if type == Globals.FocusType.RING:
         power = 0.0
@@ -22,6 +28,8 @@ func pickup_focus(type, subtype):
 
 
 func pickup_element(type):
+    emit_signal("tutorial_event", Globals.TutorialEvents.ELEMENT_PICKUP)
+
     inactive_elements.append(Element.new(type))
 
 

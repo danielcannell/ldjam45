@@ -25,7 +25,7 @@ func _ready():
     # collision masks are set so that this will happen if we hit an enemy or a
     # wall
     connect("body_entered", self, "_on_body_entered")
-    
+
     # This signal is emitted when an area enters the area. This is for
     # collisions with other projectiles.
     connect("area_entered", self, "_on_projectile_collision")

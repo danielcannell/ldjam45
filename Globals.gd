@@ -93,8 +93,9 @@ enum Tiles {
 }
 
 enum TutorialEvents {
-    DEMO_MESSAGE_EVENT,
-    DEMO_ACTION_EVENT,
+    FOCUS_PICKUP,
+    ELEMENT_PICKUP,
+    FOCUS_EDITOR_OPEN,
 }
 
 const ENEMY_IMAGES = {

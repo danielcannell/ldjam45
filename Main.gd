@@ -5,6 +5,7 @@ onready var player = $ViewportContainer/Viewport/Playfield.player
 onready var magic = $Magic
 onready var focus_editor = $UI/CanvasLayer2/FocusEditor
 onready var ui = $UI
+onready var tutorial = $Tutorial
 
 
 func _ready():
@@ -20,3 +21,6 @@ func _ready():
     playfield.connect("item_picked_up", magic, "_on_item_pickup")
 
     player.connect("player_death", ui, "on_player_death")
+
+    magic.inventory.connect("tutorial_event", tutorial, "handle_tutorial_event")
+    focus_editor.connect("tutorial_event", tutorial, "handle_tutorial_event")
