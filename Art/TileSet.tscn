@@ -268,3 +268,31 @@ position = Vector2( -128, 0 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall18/StaticBody2D"]
 position = Vector2( 128, 0 )
 polygon = PoolVector2Array( 8, -8, 8, 8, -8, 8, -8, -8 )
+
+[node name="Wall19" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 48, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 16, 16, 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall19"]
+position = Vector2( -128, 0 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall19/StaticBody2D"]
+position = Vector2( 128, 0 )
+polygon = PoolVector2Array( 8, -8, 8, 8, -8, 8, -8, -8 )
+
+[node name="Wall20" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 64, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 16, 16, 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall20"]
+position = Vector2( -128, 0 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall20/StaticBody2D"]
+position = Vector2( 128, 0 )
+polygon = PoolVector2Array( 8, -8, 8, 8, -8, 8, -8, -8 )
