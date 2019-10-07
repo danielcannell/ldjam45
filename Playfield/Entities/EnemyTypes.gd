@@ -76,10 +76,36 @@ static func water_elemental() -> Enemy:
 
     enemy.movement_speed = 10.0
     enemy.image = Globals.ENEMY_IMAGES["water_elemental"]
-    enemy.sprite_width = 17.0
+    enemy.sprite_width = 32.0
     enemy.sprite_height = 40.0
     var type: Element = Element.new(Globals.Elements.WATER)
     enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STAFF, type, 1.0)
+    return enemy
+
+
+static func elemental_boss() -> Enemy:
+    var enemy = EnemyScene.instance()
+    var aggro_distance: float = 999.0
+    var lose_sight_distance: float = 999.0
+    var attack_range: float = 128.0
+    var keep_away_distance: float = 0.0
+
+    enemy.add_ai(AISpellcaster.new(Globals.ai_manager, enemy, aggro_distance, lose_sight_distance, attack_range, keep_away_distance))
+    enemy.add_ai(AIGoHome.new(Globals.ai_manager, enemy))
+
+    enemy.set_passives([], [Globals.Elements.FIRE, Globals.Elements.WATER], [])
+
+    enemy.movement_speed = 32.0
+    enemy.image = Globals.ENEMY_IMAGES["elemental_boss"]
+    enemy.sprite_width = 64.0
+    enemy.sprite_height = 80.0
+    var type: Element = Element.new(Globals.Elements.WIND)
+    enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STAFF, type, 1.5)
+
+    enemy.explode_count = 15
+    enemy.explode_range = 200.0
+    enemy.attack_cooldown = 1.5
+
     return enemy
 
 
@@ -97,10 +123,12 @@ static func balrog() -> Enemy:
 
     enemy.movement_speed = 2.0
     enemy.image = Globals.ENEMY_IMAGES["balrog"]
-    enemy.sprite_width = 128.0
-    enemy.sprite_height = 140.0
+    enemy.sprite_width = 192.0
+    enemy.sprite_height = 200.0
     var type: Element = Element.new(Globals.Elements.FIRE)
     enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STAFF, type, 5.0)
+
+    enemy.set_max_health(500)
 
     enemy.explode_count = 30
     enemy.explode_range = 1e6

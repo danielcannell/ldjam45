@@ -149,7 +149,7 @@ func shoot(target_pos):
 
 
 func explode(target_pos):
-    var initial_theta = (position - target_pos).angle()
+    var initial_theta = (target_pos - position).angle()
 
     for i in range(explode_count):
         var theta = initial_theta + (i * 6.283185307) / explode_count

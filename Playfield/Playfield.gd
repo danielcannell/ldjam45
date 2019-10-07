@@ -124,6 +124,9 @@ func _ready():
     add_enemy(EnemyTypes.water_elemental(), -36, -20)
 
 
+    add_enemy(EnemyTypes.elemental_boss(), -39, -26, Globals.WorldItem.RING)
+    add_item(Globals.WorldItem.WIND, -40, -27)
+
     add_enemy(EnemyTypes.balrog(), 24, 28)
 
 
