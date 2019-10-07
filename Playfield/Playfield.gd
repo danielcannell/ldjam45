@@ -72,10 +72,7 @@ func _ready():
 
     add_item(Globals.WorldItem.STICK, 32, 3.5)
 
-    add_enemy(EnemyTypes.evil_wizard(), 3, 3, Globals.WorldItem.HAT)
-
-    add_enemy(EnemyTypes.fire_elemental(), 3, 10, Globals.WorldItem.FIRE)
-    add_enemy(EnemyTypes.water_elemental(), 6, 10, Globals.WorldItem.WATER)
+    add_enemy(EnemyTypes.balrog(), 24, 28)
 
     var world_items = [
         Globals.WorldItem.STICK,

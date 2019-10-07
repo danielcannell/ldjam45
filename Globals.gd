@@ -131,6 +131,7 @@ const ENEMY_IMAGES = {
     "evil_wizard": preload("res://Art/evil_wizard.png"),
     "fire_elemental": preload("res://Art/fire_elemental.png"),
     "water_elemental": preload("res://Art/water_elemental.png"),
+    "balrog": preload("res://Art/balrog.png"),
 }
 
 const ELEMENT_IMAGES = {
