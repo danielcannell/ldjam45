@@ -51,6 +51,44 @@ func add_item(item_type: int, x: float, y: float) -> void:
     item.set_type(item_type)
     add_child(item)
 
+func populate_left_elemental_room(type: int):
+    match type:
+        Globals.Elements.FIRE:
+            add_enemy(EnemyTypes.fire_elemental(), -50, -9)
+            add_enemy(EnemyTypes.fire_elemental(), -42, -8)
+            add_enemy(EnemyTypes.fire_elemental(), -44, -4)
+            add_enemy(EnemyTypes.fire_elemental(), -52, 2)
+            add_enemy(EnemyTypes.fire_elemental(), -40, 2)
+            add_item(Globals.WorldItem.FIRE, -57, -3)
+        Globals.Elements.WATER:
+            add_enemy(EnemyTypes.water_elemental(), -50, -9)
+            add_enemy(EnemyTypes.water_elemental(), -42, -8)
+            add_enemy(EnemyTypes.water_elemental(), -44, -4)
+            add_enemy(EnemyTypes.water_elemental(), -52, 2)
+            add_enemy(EnemyTypes.water_elemental(), -40, 2)
+            add_item(Globals.WorldItem.WATER, -57, -3)
+        _:
+            print("Unknown elemental type, spawning no enemies")
+
+
+func populate_right_elemental_room(type: int):
+    match type:
+        Globals.Elements.FIRE:
+            add_enemy(EnemyTypes.fire_elemental(), -19, -8)
+            add_enemy(EnemyTypes.fire_elemental(), -12, -7)
+            add_enemy(EnemyTypes.fire_elemental(), -10, -3)
+            add_enemy(EnemyTypes.fire_elemental(), -18, 3)
+            add_enemy(EnemyTypes.fire_elemental(), -9, 1)
+            add_item(Globals.WorldItem.FIRE, -4, -3)
+        Globals.Elements.WATER:
+            add_enemy(EnemyTypes.water_elemental(), -19, -8)
+            add_enemy(EnemyTypes.water_elemental(), -12, -7)
+            add_enemy(EnemyTypes.water_elemental(), -10, -3)
+            add_enemy(EnemyTypes.water_elemental(), -18, 3)
+            add_enemy(EnemyTypes.water_elemental(), -9, 1)
+            add_item(Globals.WorldItem.WATER, -4, -3)
+        _:
+            print("Unknown elemental type, spawning no enemies")
 
 func _ready():
     Globals.ai_manager = $AI
@@ -67,28 +105,24 @@ func _ready():
     assert(currentroom != null)
     roomcenter.jump_to_room(currentroom)
 
-    add_enemy(EnemyTypes.grunt(), 9, 1)
-    add_enemy(EnemyTypes.grunt(), 13, 5)
+    add_enemy(EnemyTypes.grunt(rand_range(25, 40)), 9, 1)
+    add_enemy(EnemyTypes.grunt(rand_range(25, 40)), 11, 6)
+    add_enemy(EnemyTypes.grunt(rand_range(25, 40)), 13, 0)
 
-    add_item(Globals.WorldItem.STICK, 32, 3.5)
+    add_item(Globals.WorldItem.STICK, 32, 3)
 
-    add_enemy(EnemyTypes.evil_wizard(), 3, 3, Globals.WorldItem.HAT)
+    add_enemy(EnemyTypes.evil_wizard(randi() % Globals.Elements._MAX), 23, -10, Globals.WorldItem.HAT)
+    add_enemy(EnemyTypes.grunt(48.0), 22, -9, Globals.WorldItem.ROCK)
 
-    add_enemy(EnemyTypes.fire_elemental(), 3, 10, Globals.WorldItem.FIRE)
-    add_enemy(EnemyTypes.water_elemental(), 6, 10, Globals.WorldItem.WATER)
+    var left_room_elem = Globals.Elements.FIRE if randi() % 2 == 0 else Globals.Elements.WATER
+    var right_room_elem = Globals.Elements.WATER if left_room_elem == Globals.Elements.FIRE else Globals.Elements.FIRE
+    
+    populate_left_elemental_room(left_room_elem)
+    populate_right_elemental_room(right_room_elem)
+    
+    add_enemy(EnemyTypes.fire_elemental(), -29, -27)
+    add_enemy(EnemyTypes.water_elemental(), -36, -20)
 
-    var world_items = [
-        Globals.WorldItem.STICK,
-        Globals.WorldItem.WAND,
-        Globals.WorldItem.STAFF,
-        Globals.WorldItem.HAT,
-        Globals.WorldItem.RING,
-
-        Globals.WorldItem.FIRE,
-        Globals.WorldItem.WATER,
-        Globals.WorldItem.ROCK,
-        Globals.WorldItem.WIND,
-    ]
 
 
 func on_item_picked_up(item):
