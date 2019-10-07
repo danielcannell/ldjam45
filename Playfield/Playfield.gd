@@ -232,4 +232,4 @@ func _draw():
             for point in room.points:
                 points.append(point * zoom)
             points.append(room.points[0] * zoom)
-            draw_polyline(points, colors[i])
+            draw_polyline(points, colors[i % colors.size()])
