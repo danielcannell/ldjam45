@@ -37,7 +37,11 @@ func _ready():
     health_bar.rect_size.x = sprite_width
     health_bar.rect_position.x = -(health_bar.rect_size.x / 2)
     health_bar.rect_position.y = -(sprite_height / 2)
-    collision.shape.radius = sprite_width / 2
+
+    var hitbox = CircleShape2D.new()
+    hitbox.radius = sprite_width / 2
+    collision.shape = hitbox
+
     health.connect("on_heal", self, "on_heal")
     health_bar.max_value = health.max_value
 
