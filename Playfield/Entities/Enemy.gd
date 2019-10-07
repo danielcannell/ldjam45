@@ -179,7 +179,6 @@ func attack(target: Node2D) -> void:
 
     if current_goal.type == GoalHelpers.Type.ATTACK_CLOSE or current_goal.type == GoalHelpers.Type.ATTACK_SHOOT:
         var action = weapon.action().action
-        print("Attack:", action)
         match action:
             Globals.Action.HIT:
                 swing(weapon, target.position)
