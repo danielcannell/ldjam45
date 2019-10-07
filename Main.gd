@@ -24,3 +24,9 @@ func _ready():
 
     magic.inventory.connect("tutorial_event", tutorial, "handle_tutorial_event")
     focus_editor.connect("tutorial_event", tutorial, "handle_tutorial_event")
+
+
+func _process(delta):
+    var size := get_viewport_rect().size - Vector2(180, 0)
+    $ViewportContainer.rect_size = size
+    $ViewportContainer/Viewport.size = size
