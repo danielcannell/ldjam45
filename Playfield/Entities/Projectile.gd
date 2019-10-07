@@ -5,6 +5,7 @@ var type
 var velocity = Vector2(200, 0)
 var ttl = 10000
 var team = Globals.Team.PLAYER
+var power = 1.0
 
 const SPEED = 200
 
@@ -57,4 +58,4 @@ func _on_body_entered(body):
         # We have collided with an enemy!
         # We use call_deferred because otherwise we sometimes get the following error:
         # ERROR: Can't change this state while flushing queries.
-        body.call_deferred("damage", 10, type)
+        body.call_deferred("damage", 10 * power, type)

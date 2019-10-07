@@ -45,6 +45,13 @@ func add_enemy(enemy: Enemy, x: float, y: float, loot: int = Globals.WorldItem._
     add_child(enemy)
 
 
+func add_item(item_type: int, x: float, y: float) -> void:
+    var item = Item.instance()
+    item.position = tilemap.map_to_world(Vector2(x, y))
+    item.set_type(item_type)
+    add_child(item)
+
+
 func _ready():
     Globals.ai_manager = $AI
     Globals.ai_manager.playfield = self
@@ -54,13 +61,17 @@ func _ready():
     roomcenter.cell_size = tilemap.cell_size
 
     var player_start := Vector2(Config.PLAYER_START_X, Config.PLAYER_START_Y)
-    player.position = tilemap.map_to_world(player_start)
+    player.position = tilemap.map_to_world(player_start) + Vector2(0, 8)
 
     currentroom = rooms.get_containing_room(player_start)
     assert(currentroom != null)
     roomcenter.jump_to_room(currentroom)
 
-    add_enemy(EnemyTypes.grunt(), 5, 5)
+    add_enemy(EnemyTypes.grunt(), 9, 1)
+    add_enemy(EnemyTypes.grunt(), 13, 5)
+
+    add_item(Globals.WorldItem.STICK, 32, 3.5)
+
     add_enemy(EnemyTypes.evil_wizard(), 3, 3, Globals.WorldItem.HAT)
 
     add_enemy(EnemyTypes.fire_elemental(), 3, 10, Globals.WorldItem.FIRE)
@@ -78,12 +89,6 @@ func _ready():
         Globals.WorldItem.ROCK,
         Globals.WorldItem.WIND,
     ]
-
-    for i in range(len(world_items)):
-        var item = Item.instance()
-        item.position = tilemap.map_to_world(Vector2(15 + 2 * i, 3))
-        item.set_type(world_items[i])
-        add_child(item)
 
 
 func on_item_picked_up(item):

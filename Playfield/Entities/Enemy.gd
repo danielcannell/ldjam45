@@ -39,6 +39,7 @@ func _ready():
     health_bar.rect_position.y = -(sprite_height / 2)
     collision.shape.radius = sprite_width / 2
     health.connect("on_heal", self, "on_heal")
+    health_bar.max_value = health.max_value
 
 
 func get_team():
@@ -58,6 +59,11 @@ func damage(dmg, type):
         queue_free()
 
     update()
+
+
+func set_max_health(value: float) -> void:
+    health.set_max(value)
+    health.value = value
 
 
 func on_heal(amt) -> void:
@@ -128,21 +134,23 @@ func get_new_ai_goal() -> void:
         update()
 
 
-func shoot(type, target_pos):
+func shoot(target_pos):
     var p = Projectile.instance()
-    p.init(type, position, target_pos, 1e6)
+    p.init(weapon.element.type, position, target_pos, 1e6)
     p.team = Globals.Team.ENEMY
+    p.power = weapon.power
     playfield.add_child(p)
 
 
-func explode(type, target_pos):
+func explode(target_pos):
     var initial_theta = (position - target_pos).angle()
 
     for i in range(Config.EXPLOSION_NUM_PROJECTILES):
         var theta = initial_theta + (i * 6.283185307) / Config.EXPLOSION_NUM_PROJECTILES
         var target = position + Vector2(cos(theta), sin(theta))
         var p = Projectile.instance()
-        p.init(type, position, target, Config.EXPLOSION_PROJECTILE_RANGE)
+        p.init(weapon.element.type, position, target, Config.EXPLOSION_PROJECTILE_RANGE)
+        p.power = weapon.power
         p.team = Globals.Team.ENEMY
         playfield.add_child(p)
 
@@ -152,6 +160,7 @@ func swing(focus, target_pos):
     var dir: Vector2 = target_pos - position
     s.init(focus, dir)
     s.team = Globals.Team.ENEMY
+    s.power = focus.power
     add_child(s)
     s.position = Vector2(sign(dir.x) * 4, 4)
 
@@ -169,9 +178,9 @@ func attack(target: Node2D) -> void:
             Globals.Action.HIT:
                 swing(weapon, target.position)
             Globals.Action.PROJECT:
-                shoot(weapon.element.type, target.position)
+                shoot(target.position)
             Globals.Action.EXPLODE:
-                explode(weapon.element.type, target.position)
+                explode(target.position)
     else:
         assert(false)
 

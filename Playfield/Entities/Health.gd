@@ -5,7 +5,8 @@ class_name Health
 signal on_heal
 
 
-var value = 100
+var max_value = 100.0
+var value = 100.0
 var heal_cooldown: float = 1.0
 
 
@@ -28,6 +29,10 @@ func damage(dmg, type) -> float:
     return dmg
 
 
+func set_max(value: float) -> void:
+    max_value = value
+
+
 func alive():
     return value > 0
 
@@ -44,6 +49,6 @@ func process(delta):
         var heal_rate = Config.HEAL_RATE * (buffs[Globals.Elements.WATER] - 1)
         heal_rate -= Config.BURN_RATE * (buffs[Globals.Elements.FIRE] - 1)
         if abs(heal_rate) > 1e-5:
-            if value < 100:
+            if value < max_value:
                 emit_signal("on_heal", heal_rate)
-            value = min(100, value + heal_rate)
+            value = min(max_value, value + heal_rate)
