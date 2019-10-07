@@ -127,7 +127,7 @@ static func balrog() -> Enemy:
     enemy.image = Globals.ENEMY_IMAGES["balrog"]
     enemy.sprite_width = 192.0
     enemy.sprite_height = 200.0
-    var type: Element = Element.new(Globals.Elements.FIRE)
+    var type: Element = Element.new(Globals.Elements.MAGIC)
     enemy.weapon = Focus.new(Globals.FocusType.WEAPON, Globals.Foci.STAFF, type, 5.0)
 
     enemy.set_max_health(500)

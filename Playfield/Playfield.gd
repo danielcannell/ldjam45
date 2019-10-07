@@ -116,10 +116,10 @@ func _ready():
 
     var left_room_elem = Globals.Elements.FIRE if randi() % 2 == 0 else Globals.Elements.WATER
     var right_room_elem = Globals.Elements.WATER if left_room_elem == Globals.Elements.FIRE else Globals.Elements.FIRE
-    
+
     populate_left_elemental_room(left_room_elem)
     populate_right_elemental_room(right_room_elem)
-    
+
     add_enemy(EnemyTypes.fire_elemental(), -29, -27)
     add_enemy(EnemyTypes.water_elemental(), -36, -20)
 

@@ -4,7 +4,7 @@ const EXPLOSION_NUM_PROJECTILES = 10
 const EXPLOSION_PROJECTILE_RANGE = 50.0
 
 const PLAYER_START_X: float = 3.0
-const PLAYER_START_Y: float = 3.5
+const PLAYER_START_Y: float = 3.0
 
 const PLAYER_SPEED = 100
 const HEAL_RATE = 10
@@ -20,14 +20,16 @@ var player_resistances := {
     Globals.Elements.FIRE: 1.0,
     Globals.Elements.WATER: 1.0,
     Globals.Elements.WIND: 1.0,
-    Globals.Elements.ROCK: 1.0
+    Globals.Elements.ROCK: 1.0,
+    Globals.Elements.MAGIC: 1.0,
 }
 
 var player_buffs := {
     Globals.Elements.FIRE: 1.0,
     Globals.Elements.WATER: 1.0,
     Globals.Elements.WIND: 1.0,
-    Globals.Elements.ROCK: 1.0
+    Globals.Elements.ROCK: 1.0,
+    Globals.Elements.MAGIC: 1.0,
 }
 
 # If active is false, then the tutorial will not run.

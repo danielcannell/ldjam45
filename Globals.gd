@@ -39,6 +39,7 @@ enum Elements {
     WATER,
     WIND,
     ROCK,
+    MAGIC
 
     _MAX
 }
@@ -178,6 +179,7 @@ const PROJECTILE_IMAGES = {
     Elements.WATER: preload("res://Art/projectiles/waterball.png"),
     Elements.ROCK: preload("res://Art/projectiles/rockball.png"),
     Elements.WIND: preload("res://Art/projectiles/windball.png"),
+    Elements.MAGIC: preload("res://Art/projectiles/magicball.png"),
 }
 
 # Names of unenchanted foci
@@ -236,6 +238,7 @@ const ELEMENT_NAMES = {
     Elements.WATER: "Water",
     Elements.ROCK: "Rock",
     Elements.WIND: "Wind",
+    Elements.MAGIC: "Magic",
 }
 
 var ai_manager: AIManager = null
@@ -246,4 +249,5 @@ const ELEMENT_CANCELLATION = {
     Elements.WATER: [Elements.FIRE],
     Elements.ROCK: [Elements.WIND],
     Elements.WIND: [Elements.ROCK],
+    Elements.MAGIC: [],
 }
