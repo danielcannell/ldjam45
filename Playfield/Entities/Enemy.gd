@@ -13,9 +13,9 @@ const Projectile = preload("res://Playfield/Entities/Projectile.tscn")
 const Swing = preload("res://Playfield/Entities/Swing.tscn")
 const Item = preload("res://Playfield/Entities/Item.tscn")
 
-const attack_cooldown: float = 1.0
 const DEBUG_AI_GOAL = false
 
+var attack_cooldown: float = 1.0
 var current_goal = null
 var next_attack_time: float = 0
 var time: float = 0
@@ -25,6 +25,8 @@ var sprite_height: float = 0
 var weapon: Focus = null
 var movement_speed: float = 0
 var loot = Globals.WorldItem._MAX
+var explode_range := Config.EXPLOSION_PROJECTILE_RANGE
+var explode_count := Config.EXPLOSION_NUM_PROJECTILES
 
 onready var health_bar = $HealthBar
 onready var sprite = $Sprite
@@ -149,11 +151,11 @@ func shoot(target_pos):
 func explode(target_pos):
     var initial_theta = (position - target_pos).angle()
 
-    for i in range(Config.EXPLOSION_NUM_PROJECTILES):
-        var theta = initial_theta + (i * 6.283185307) / Config.EXPLOSION_NUM_PROJECTILES
+    for i in range(explode_count):
+        var theta = initial_theta + (i * 6.283185307) / explode_count
         var target = position + Vector2(cos(theta), sin(theta))
         var p = Projectile.instance()
-        p.init(weapon.element.type, position, target, Config.EXPLOSION_PROJECTILE_RANGE)
+        p.init(weapon.element.type, position, target, explode_range)
         p.power = weapon.power
         p.team = Globals.Team.ENEMY
         playfield.add_child(p)

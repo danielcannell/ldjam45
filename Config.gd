@@ -1,7 +1,7 @@
 extends Node
 
 const EXPLOSION_NUM_PROJECTILES = 10
-const EXPLOSION_PROJECTILE_RANGE = 50
+const EXPLOSION_PROJECTILE_RANGE = 50.0
 
 const PLAYER_START_X: float = 3.0
 const PLAYER_START_Y: float = 3.5
