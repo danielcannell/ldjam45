@@ -15,6 +15,7 @@ enum State {
 var next_time = 0
 var target_pos = Vector2(0, 0)
 var current_room = null
+var prev_room = null
 
 var idle_time_min: float = 0
 var idle_time_max: float = 0
@@ -31,13 +32,20 @@ func _init(manager, entity, idle_time_min: float, idle_time_max: float, fuzzy_di
 
 func go_idle():
     state = State.IDLE
+    current_room = null
 
 
 func think():
     if state == State.IDLE:
-        var room := manager.get_room(entity.position)
-        if room:
-            current_room = room
+        if not current_room:
+            var room := manager.get_room(get_pos())
+            if room:
+                current_room = room
+
+        if not current_room:
+            current_room = prev_room
+        else:
+            prev_room = current_room
 
         if next_time <= manager.time:
             next_time = manager.time + rand_range(idle_time_min, idle_time_max)

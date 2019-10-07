@@ -49,6 +49,9 @@ func contains(pos: Vector2) -> bool:
     if pos.x < bounds.position.x or pos.x > bounds.end.x or pos.y < bounds.position.y or pos.y > bounds.end.y:
         return false
 
+    if points.size() == 4:
+        return true
+
     var hits: int = 0
     var npoints: int = points.size()
     var lastpos: Vector2

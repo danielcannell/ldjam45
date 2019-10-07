@@ -26,12 +26,12 @@ func think():
     if current_room == null:
         current_room = manager.get_room(get_pos())
 
-    var player_room = manager.get_room(player_pos())
-
-    if not tracking_player and player_room == current_room:
+    if not tracking_player:
         tracking_player = get_nearby_player(see_range)
 
     if tracking_player:
+        var player_room = manager.get_player_room()
+
         var dist := get_pos().distance_to(tracking_player.position)
         if dist > lose_sight_range or (only_one_room and (player_room != current_room)):
             tracking_player = null
